@@ -6,20 +6,22 @@
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
   </head>
+
   <body>
     <header>
         <section class="header-left">
           <img src="img/dice.png">
         </section>
         <section class="header-middle">
-          <h2>Main page</h2>
-          <h2>My Games</h2>
-          <h2>Recommended Games</h2>
+          <a href="blank"><h2>Main page</h2></a>
+          <a href="blank"><h2>My Games</h2></a>
+          <a href="blank"><h2>Recommended Games</h2></a>
         </section>
         <section class="header-right">
           <h3>Who goes first!</h3>
         </section>
     </header>
+
     <main>
       <section class="asking-form">
         <ul class="form-left">
@@ -63,7 +65,29 @@
             </li>
           </ul>
         </ul>
+        <div class="button">
+           <button type="button" onclick="submit">LETS ROLL!</button>
+        </div>
       </section>
+
+      <section class="results">
+        <h4>** This is what we Recommend **</h4>
+        <tbody id="results-table">
+          <!--table content dynamically generrated in JS-->
+        </tbody>
+      </section>
+
+      <footer>
+        <section class="footer">
+          <div class="footer-left">
+            <h5><a href="blank">Where to buy games</h5>
+          </div>
+          <div class="footer-right">
+            <h5><a href="blank">About Us<h5>
+          </div>
+        </section>
+      </footer>
+
     </main>
     <script src="app.js"></script>
   </body>
