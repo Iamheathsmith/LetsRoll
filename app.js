@@ -63,11 +63,11 @@ Game.prototype.artMatch = function (formLooks) {
 
 
 // function: add an object to the passing array if it passes every test
-var addIfPassing = function (gameObject) {
-  if (gameObject.playersMatch === true
-    && gameObject.timesMatch === true
-    && gameObject.coopMatch === true
-    && gameObject.artMatch === true) { // if the game passes all of the tests...
+var addIfPassing = function (gameObject, formPlayers, formTime, formCompetitive, formLooks) {
+  if (gameObject.prototype.playersMatch(formPlayers)
+    && gameObject.prototype.timesMatch(formTime)
+    && gameObject.prototype.coopMatch(formCompetitive)
+    && gameObject.prototype.artMatch(formLooks)) { // if the game passes all of the tests...
     passingArray.push(gameObject); // add that game to the array
   } // end if
 } // end function addIfPassing
@@ -77,7 +77,7 @@ var addIfPassing = function (gameObject) {
 var updatePassingArray = function (){
   passingArray = []; // reset the passing array
   for (var gameIndex = 0; gameIndex < gameArray.length; gameIndex++){ // for every game...
-    addIfPassing(gameArray[gameIndex]); // add object to the passing array if it passes
+    addIfPassing(gameArray[gameIndex], formPlayers, formTime, formCompetitive, formLooks); // add object to the passing array if it passes
   } // end for
 } // end function updatePassingArray
 
@@ -106,4 +106,4 @@ var sortByDifficulty = function (passingArray, formDifficulty) {
             } // end if
         } // end for loop
     } while (swapped); // ...as long as swapped remains true by the end of the loop
-}
+} // end function sortByDifficulty
