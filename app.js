@@ -4,6 +4,5 @@ var whoGoesFirst = function () {
   var randomFirst = goFirst[Math.floor(Math.random() * goFirst.length)];
   var goFirstBtn = document.getElementById('goFirstBtn');
   goFirstBtn (alert(randomFirst));
+  whoGoesFirst ();
 };
-
-whoGoesFirst ();
