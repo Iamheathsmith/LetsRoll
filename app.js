@@ -74,7 +74,7 @@ var addIfPassing = function (gameObject, formPlayers, formTime, formCompetitive,
 
 
 // function: generate the array of passing games
-var updatePassingArray = function (){
+var updatePassingArray = function (formPlayers, formTime, formCompetitive, formLooks){
   passingArray = []; // reset the passing array
   for (var gameIndex = 0; gameIndex < gameArray.length; gameIndex++){ // for every game...
     addIfPassing(gameArray[gameIndex], formPlayers, formTime, formCompetitive, formLooks); // add object to the passing array if it passes
