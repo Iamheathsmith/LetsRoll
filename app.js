@@ -11,7 +11,11 @@ function Game(name, numPlayers, playTime, skillLevel, isCompetitive, isThematic,
  this.description = description;
 }
 
-var passingArray = [];
+
+/***** VARIABLE DECLARATIONS *****/
+
+
+var passingArray = []; // array to hold the objects that pass the filtering tests
 
 
 /***** PROTOTYPE METHODS *****/
@@ -45,6 +49,7 @@ Game.prototype.coopMatch = function (formCompetitive) {
 } // end coopMatch method
 
 
+// method: match the form input to the stored value
 Game.prototype.artMatch = function (formLooks) {
   if (formLooks = this.looksGood) { // if the game is the desired type...
     return true; // return true
@@ -57,16 +62,18 @@ Game.prototype.artMatch = function (formLooks) {
 /***** HELPER FUNCTIONS *****/
 
 
+// function: add an object to the passing array if it passes every test
 var addIfPassing = function (gameObject) {
-  if (gameObject.playersMatch === true;
-    && gameObject.timesMatch === true;
-    && gameObject.coopMatch === true;
-    && gameObject.artMatch === true;) { // if the game passes all of the tests...
+  if (gameObject.playersMatch === true
+    && gameObject.timesMatch === true
+    && gameObject.coopMatch === true
+    && gameObject.artMatch === true) { // if the game passes all of the tests...
     passingArray.push(gameObject); // add that game to the array
   } // end if
 } // end function addIfPassing
 
 
+// function: generate the array of passing games
 var updatePassingArray = function (){
   passingArray = []; // reset the passing array
   for (var gameIndex = 0; gameIndex < gameArray.length; gameIndex++){ // for every game...
@@ -75,6 +82,7 @@ var updatePassingArray = function (){
 } // end function updatePassingArray
 
 
+// function: return a positive number regardless of the sign of the input number
 var flipSign = function (integer) {
   if (integer < 0) { // if the integer is negative
     return integer * -1; // make it positive
@@ -89,11 +97,11 @@ var sortByDifficulty = function (passingArray, formDifficulty) {
     var swapped; // declare variable to keep track of if swaps were made (starts as false)
     do { // run this code:
         swapped = false; // set swapped to false
-        for (var i=0; i < passingArray.length-1; i++) { // for every game that passed the test
-            if (flipSign(passingArray[i] - formDifficulty) > flipSign(passingArray[i+1] - formDifficulty)) { // if the current index is farther away from the input difficulty than the next index...
+        for (var i = 0; i < passingArray.length - 1; i++) { // for every game that passed the test
+            if (flipSign(passingArray[i] - formDifficulty) > flipSign(passingArray[i + 1] - formDifficulty)) { // if the current index is farther away from the input difficulty than the next index...
                 var temp = passingArray[i]; // place the value of the current index in a temporary location
-                passingArray[i] = passingArray[i+1]; // replace the current index spot with the next index
-                passingArray[i+1] = temp; // replace the next index spot with the value from the temporary location
+                passingArray[i] = passingArray[i + 1]; // replace the current index spot with the next index
+                passingArray[i + 1] = temp; // replace the next index spot with the value from the temporary location
                 swapped = true; // indicate that a swap was made
             } // end if
         } // end for loop
