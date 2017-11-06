@@ -137,3 +137,13 @@ h5 {
   padding: 40px;
   font-size: 20px;
 }
+
+/*
+CSS FOR MEEPLE SPIN
+needs to be added
+
+img:active {
+  transition: 2s;
+  transform: rotate(1080deg);
+}
+*/
