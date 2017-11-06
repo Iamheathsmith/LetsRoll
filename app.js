@@ -1,15 +1,15 @@
 'use strict';
 
-function Game(name, numPlayers, playTime, skillLevel, isCompetitive, isThematic, pictureLink, description) {
- this.name = name,
- this.numPlayers = numPlayers,
- this.playTime = playTime,
- this.skillLevel = skillLevel,
- this.isCompetitive = isCompetitive,
- this.isThematic = isThematic,
- this.pictureLink = pictureLink,
- this.description = description;
-}
+// function Game(name, numPlayers, playTime, skillLevel, isCompetitive, isThematic, pictureLink, description) {
+//  this.name = name,
+//  this.numPlayers = numPlayers,
+//  this.playTime = playTime,
+//  this.skillLevel = skillLevel,
+//  this.isCompetitive = isCompetitive,
+//  this.isThematic = isThematic,
+//  this.pictureLink = pictureLink,
+//  this.description = description;
+// }
 
 
 /***** VARIABLE DECLARATIONS *****/
@@ -107,3 +107,7 @@ var sortByDifficulty = function (passingArray, formDifficulty) {
         } // end for loop
     } while (swapped); // ...as long as swapped remains true by the end of the loop
 } // end function sortByDifficulty
+
+var goFirst = ['Who just had a Birtday?', 'Who is the youngest?', 'Who is the oldest'];
+
+var randomFirst = goFirst[Math.floor(Math.random() * goFirst.length)];
