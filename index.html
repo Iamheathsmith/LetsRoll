@@ -23,10 +23,10 @@
     </header>
 
     <main>
-      <section class="asking-form">
+      <form class="asking-form">
         <ul class="form-left">
           <li class="form-li">Number of Players:
-            <select name="num-0f-player">
+            <select name="num-0f-player" required>
               <option value="none-players" selected>please select</option>
               <option value="num-two">2 players</option>
               <option value="num-three">3 players</option>
@@ -37,19 +37,14 @@
               <option value="num-eight">8 players</option>
             </select>
           </li>
-          <li class="form-li">Time of Play:
-            <select name="time-of-play">
-              <option value="none-hours" selected>please select</option>
-              <option value="less-1">Less then 1 hour</option>
-              <option value="1-2-hours">1-2 hours</option>
-              <option value="2-4-hours">2-4 hours</option>
-              <option value="all-night">all night long!</option>
-            </select>
+          <li class="form-li">How long can you Play?:
+              <input type="number" id="time-of-play" name="timePlay" required>
+              <label>Minutes.</label>
           </li>
         </ul>
         <ul class="form-right">
           <li class="form-li">Difficulty Level:
-            <select name="difficulty-lvl">
+            <select name="difficulty-lvl" required>
               <option value="" selected>please select</option>
               <option value="dif-one">level 1</option>
               <option value="dif-two">level 2</option>
@@ -68,7 +63,7 @@
         <div class="button">
            <button type="button" onclick="submit">LETS ROLL!</button>
         </div>
-      </section>
+      </form>
 
       <section class="results">
         <h4>** This is what we Recommend **</h4>
@@ -89,6 +84,6 @@
       </footer>
 
     </main>
-    <script src="app.js"></script>
+    <!-- <script src="app.js"></script> -->
   </body>
 </html>
