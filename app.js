@@ -1,1 +1,101 @@
 'use strict';
+
+function Game(name, numPlayers, playTime, skillLevel, isCompetitive, isThematic, pictureLink, description) {
+ this.name = name,
+ this.numPlayers = numPlayers,
+ this.playTime = playTime,
+ this.skillLevel = skillLevel,
+ this.isCompetitive = isCompetitive,
+ this.isThematic = isThematic,
+ this.pictureLink = pictureLink,
+ this.description = description;
+}
+
+var passingArray = [];
+
+
+/***** PROTOTYPE METHODS *****/
+
+
+Game.prototype.playersMatch = function (formPlayers) {
+  for (var i = 0; i < this.numPlayers.length; i++) { // for every possible number of players...
+    if (formPlayers === this.numPlayers[i]) { // if that number is equal to the desired number...
+      return true; // return true
+    } // end if
+  } // end for
+  return false; // if no hours match, return false
+} // end playersMatch method
+
+
+Game.prototype.timesMatch = function (formTime) {
+  if (this.minTime <= formTime && formTime <= this.maxTime) { // if the game time is equal to the desired time...
+    return true; // return true
+  } else { // otherwise...
+    return false; // return false
+  } // end if else
+} // end timesMatch method
+
+
+Game.prototype.coopMatch = function (formCompetitive) {
+  if (formCompetitive = this.isCompetitive) { // if the game is the desired type...
+    return true; // return true
+  } else { // otherwise...
+    return false; // return false
+  } // end if else
+} // end coopMatch method
+
+
+Game.prototype.artMatch = function (formLooks) {
+  if (formLooks = this.looksGood) { // if the game is the desired type...
+    return true; // return true
+  } else { // otherwise...
+    return false; // return false
+  } // end if else
+} // end artMatch method
+
+
+/***** HELPER FUNCTIONS *****/
+
+
+var addIfPassing = function (gameObject) {
+  if (gameObject.playersMatch === true;
+    && gameObject.timesMatch === true;
+    && gameObject.coopMatch === true;
+    && gameObject.artMatch === true;) { // if the game passes all of the tests...
+    passingArray.push(gameObject); // add that game to the array
+  } // end if
+} // end function addIfPassing
+
+
+var updatePassingArray = function (){
+  passingArray = []; // reset the passing array
+  for (var gameIndex = 0; gameIndex < gameArray.length; gameIndex++){ // for every game...
+    addIfPassing(gameArray[gameIndex]); // add object to the passing array if it passes
+  } // end for
+} // end function updatePassingArray
+
+
+var flipSign = function (integer) {
+  if (integer < 0) { // if the integer is negative
+    return integer * -1; // make it positive
+  } else { // if the integer is already positive
+    return integer; // return it as-is
+  } // end if else
+} // end function flipSign
+
+
+// function: sorts the array of passing games by difficulty, with the top being the closest difficulty to the desired difficulty
+var sortByDifficulty = function (passingArray, formDifficulty) {
+    var swapped; // declare variable to keep track of if swaps were made (starts as false)
+    do { // run this code:
+        swapped = false; // set swapped to false
+        for (var i=0; i < passingArray.length-1; i++) { // for every game that passed the test
+            if (flipSign(passingArray[i] - formDifficulty) > flipSign(passingArray[i+1] - formDifficulty)) { // if the current index is farther away from the input difficulty than the next index...
+                var temp = passingArray[i]; // place the value of the current index in a temporary location
+                passingArray[i] = passingArray[i+1]; // replace the current index spot with the next index
+                passingArray[i+1] = temp; // replace the next index spot with the value from the temporary location
+                swapped = true; // indicate that a swap was made
+            } // end if
+        } // end for loop
+    } while (swapped); // ...as long as swapped remains true by the end of the loop
+}
