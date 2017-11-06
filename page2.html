@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Lets Roll!!!!!</title>
     <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="inputpage.css">
   </head>
 
   <body>
@@ -23,7 +23,11 @@
     </header>
 
     <main>
-      <section class="asking-form">
+      <section class="input-form">
+        <div class="input-center">
+          <label for="uname">Your game Name:</label>
+            <input type="text" id="game-name" name="name">
+        </div>
         <ul class="form-left">
           <li class="form-li">Number of Players:
             <select name="num-0f-player">
@@ -60,18 +64,18 @@
           </li>
           <ul class="form-li">Looks of Game:
             <li>
-              <input type="radio" name="look-of-game" value="looks-good"> Looks good.
-              <input type="radio" name="look-of-game" value="dont-care">Dont care.
+              <input type="radio" name="look-of-game" value="looks-good"> Looks Great!
+              <input type="radio" name="look-of-game" value="dont-care">Mehhh....
             </li>
           </ul>
         </ul>
         <div class="button">
-           <button type="button" onclick="submit">LETS ROLL!</button>
+           <button type="button" onclick="submit">Add Game</button>
         </div>
       </section>
 
       <section class="results">
-        <h4>** This is what we Recommend **</h4>
+        <h4>** Your Games **</h4>
         <tbody id="results-table">
           <!--table content dynamically generrated in JS-->
         </tbody>
