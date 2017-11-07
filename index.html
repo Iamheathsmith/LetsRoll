@@ -54,15 +54,16 @@
               <option value="dif-five">level 5</option>
             </select>
           </li>
-          <ul class="form-li">Looks of Game:
-            <li>
-              <input type="radio" name="look-of-game" value="looks-good"> Looks good.
-              <input type="radio" name="look-of-game" value="dont-care">Dont care.
-            </li>
-          </ul>
+          <li class="form-li">Care about the look of game?
+            <select name="look_Of-Game">
+              <option value="" selected>please select</option>
+              <option value="Yes">YES, it does Matter</option>
+              <option value="NO">NO, it does not Matter</option>
+            </select>
+          </li>
         </ul>
         <div class="button">
-           <button type="button" onclick="submit">LETS ROLL!</button>
+           <button id="btn_main" type="click">LETS ROLL!</button>
         </div>
       </form>
 
