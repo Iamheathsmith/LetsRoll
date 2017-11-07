@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Lets Roll!!!!!</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <header>
+        <section class="header-left">
+          <img src="img/dice.png">
+        </section>
+        <section class="header-middle">
+          <a href="blank"><h2>Main page</h2></a>
+          <a href="blank"><h2>My Games</h2></a>
+          <a href="blank"><h2>Recommended Games</h2></a>
+        </section>
+        <section class="header-right">
+          <h3>Who goes first!</h3>
+        </section>
+    </header>
+
+    <main>
+      <section class="asking-form">
+        <ul class="form-left">
+          <li class="form-li">Number of Players:
+            <select name="num-0f-player">
+              <option value="none-players" selected>please select</option>
+              <option value="num-two">2 players</option>
+              <option value="num-three">3 players</option>
+              <option value="num-four">4 players</option>
+              <option value="num-five">5 players</option>
+              <option value="num-six">6 players</option>
+              <option value="num-seven">7 players</option>
+              <option value="num-eight">8 players</option>
+            </select>
+          </li>
+          <li class="form-li">Time of Play:
+            <select name="time-of-play">
+              <option value="none-hours" selected>please select</option>
+              <option value="less-1">Less then 1 hour</option>
+              <option value="1-2-hours">1-2 hours</option>
+              <option value="2-4-hours">2-4 hours</option>
+              <option value="all-night">all night long!</option>
+            </select>
+          </li>
+        </ul>
+        <ul class="form-right">
+          <li class="form-li">Difficulty Level:
+            <select name="difficulty-lvl">
+              <option value="" selected>please select</option>
+              <option value="dif-one">level 1</option>
+              <option value="dif-two">level 2</option>
+              <option value="dif-three">level 3</option>
+              <option value="dif-four">level 4</option>
+              <option value="dif-five">level 5</option>
+            </select>
+          </li>
+          <ul class="form-li">Looks of Game:
+            <li>
+              <input type="radio" name="look-of-game" value="looks-good"> Looks good.
+              <input type="radio" name="look-of-game" value="dont-care">Dont care.
+            </li>
+          </ul>
+        </ul>
+        <div class="button">
+           <button type="button" onclick="submit">LETS ROLL!</button>
+        </div>
+      </section>
+
+      <section class="results">
+        <h4>** This is what we Recommend **</h4>
+        <tbody id="results-table">
+          <!--table content dynamically generrated in JS-->
+        </tbody>
+      </section>
+
+      <footer>
+        <section class="footer">
+          <div class="footer-left">
+            <h5><a href="blank">Where to buy games</h5>
+          </div>
+          <div class="footer-right">
+            <h5><a href="blank">About Us<h5>
+          </div>
+        </section>
+      </footer>
+
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
