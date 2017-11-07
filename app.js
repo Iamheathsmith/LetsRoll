@@ -1,11 +1,23 @@
 'use strict';
-var whoGoesFirst = function () {
-  var goFirst = ['Who just had a Birtday?', 'Who is the youngest?', 'Who is the oldest'];
+
+// function for meeple spinner
+
+function spinner() {
+  var toggle = document.getElementById('goFirstBtn');
+  toggle.addEventListener('click', function() {
+    this.setAttribute('class', 'spin');
+  });
+}
+
+spinner();
+
+function startGame(){
+  var goFirst = ['Who just had a Birtday?', 'Who is the youngest?', 'Who is the oldest', 'who has the largest shoe size', 'who is the tallest', 'last one to do "noes goes"'];
   var randomFirst = goFirst[Math.floor(Math.random() * goFirst.length)];
-  var goFirstBtn = document.getElementById('goFirstBtn');
-  goFirstBtn (alert(randomFirst));
-  whoGoesFirst ();
+  alert (randomFirst);
 };
+
+// end of function for meeple spinner
 
 var button = document.getElementById('btn');
 var form = document.getElementById('input-form');
@@ -160,12 +172,8 @@ function getFromInfo(event) {
 //
 // // ********************** Who goes first button ***********************
 
-function startGame(){
-  var goFirst = ['Who just had a Birtday?', 'Who is the youngest?', 'Who is the oldest', 'who has the largest shoe size', 'who is the tallest', 'last one to do "noes goes"'];
-  var randomFirst = goFirst[Math.floor(Math.random() * goFirst.length)];
-  alert (randomFirst);
-};
-goesFirst.addEventListener('click', startGame);
+
+//goesFirst.addEventListener('click', startGame);
 
 
 

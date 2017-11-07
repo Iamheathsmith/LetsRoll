@@ -55,12 +55,16 @@ a {
   width: 100px;
 }
 
-.header-right img:active {
-  position: relative;
+.header-right img {
   margin-top: 10px;
+  width: 60px;
+  height: 60px;
   margin-left: 25px;
-  transform: rotate(1080deg);
+}
+
+.header-right img:active {
   transition: 2s;
+  transform: rotate(1080deg);
 }
 
 
