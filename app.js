@@ -11,9 +11,9 @@ function GameGenerator(gameName, numOfPlayer, minTime, lookOfGame, difficultyLvl
   this.gameName = gameName;
   this.numOfPlayer = numOfPlayer;
   this.minTime = minTime;
+  this.maxTime = maxTime;
   this.lookOfGame = lookOfGame;
   this.difficultyLvl = difficultyLvl;
-  this.maxTime = maxTime;
 };
 
 
@@ -182,3 +182,31 @@ function gameToTable() {
     table.appendChild(newRow);
   };
 };
+
+//************************** Local Storage ************************//
+
+if (localStorage.totalClicks == 25) {
+  displayedImage = JSON.parse(localStorage.runningTest);
+  removeListeners();
+  document.getElementById('random-images').innerHTML = '';
+  buildTable();
+}
+
+var runningTest = [];
+function saveTest() {
+  if (storedMovies = []) {
+    runningTest.push(JSON.stringify(displayedImage));
+    localStorage.runningTest = runningTest;
+  }
+}
+
+function loadTest() {
+  if(localStorage.runningTest) {
+    runningTest = localStorage.runningTest.split(',');
+    runningTest = JSON.parse(runningTest);
+    console.log(runningTest);
+    displayedImage = runningTest;
+  }
+};
+
+loadTest();
