@@ -52,9 +52,17 @@ a {
   position: relative;
   bottom: 80px;
   float: right;
-  background-color: blue;
   margin-right: 30px;
+  width: 100px;
 }
+
+.header-right img {
+  margin-top: 10px;
+  width: 50px;
+  height: 50px;
+  margin-left: 25px;
+}
+
 
 #input-form {
  background-color: #F6FAFA;
@@ -121,6 +129,8 @@ a {
 }
 
 h4 {
+  text-align: center;
+  margin-top: 40px;
   font-size: 24px;
   padding-top: 10px;
 }

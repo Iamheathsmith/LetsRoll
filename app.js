@@ -9,7 +9,11 @@
 ****************************************************************/ 'use strict';
 
 
+
+
 /***** VARIABLE DECLARATIONS *****/
+
+
 
 
 // DOM calls
@@ -19,11 +23,13 @@ var button = document.getElementById ('btn'); // DOM location of the button for 
 var table = document.getElementById('results-table');
 
 
+
 /* TODO ***********************************************************************
 * add DOM calls for the search form class. This will be used for both the     *
 * "Let's Roll" page and the game recommendations page. The parameters used by *
 * this form will be the ones referenced by the testing and sorting methods    *
 ******************************************************************************/
+
 
 
 // object arrays
@@ -33,6 +39,8 @@ if (localStorage.games) {
   var gameArray = [];
 }
 var passingArray = []; // array to hold the objects that pass the filtering tests
+
+
 
 
 // "who goes first?" information
@@ -51,6 +59,7 @@ var goFirst = [ // create new array of different ways to go first, containing:
 * play, and difficulty are all required. Other parameters like art style,     *
 * coop vs competitive, etc. are to be decided by the group                    *
 ******************************************************************************/
+
 
 
 function Game (name, numPlayers, minTime, maxTime, lookOfGame, difficulty) { // construtor for Game objects
@@ -251,3 +260,4 @@ function gameSearch (event) { // create new function gameSearch, where:
 var randomFirst = function () { // create new function randomFirst, where:
   return goFirst[Math.floor (Math.random() * goFirst.length)]; // output a random item from the goFirst array
 } // end randomFirst function
+
