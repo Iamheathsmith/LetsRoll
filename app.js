@@ -16,6 +16,7 @@
 var form = document.getElementById ('input-form'); // DOM location of the form to input user game
 var mainButton = document.getElementById('btn_main'); // DOM location of the search form
 var button = document.getElementById ('btn'); // DOM location of the button for that form
+var table = document.getElementById('results-table');
 
 
 /* TODO ***********************************************************************
@@ -26,12 +27,20 @@ var button = document.getElementById ('btn'); // DOM location of the button for 
 
 
 // object arrays
-var gameArray = []; // array to hold all game objects input by the user
+if (localStorage.games) {
+  var gameArray = JSON.parse(localStorage.games);
+} else {
+  var gameArray = [];
+}
 var passingArray = []; // array to hold the objects that pass the filtering tests
 
 
 // "who goes first?" information
-var goFirst = ['Who just had a Birthday?', 'Who is the youngest?', 'Who is the oldest']; // array of possible ways to decide who goes first
+var goFirst = [ // create new array of different ways to go first, containing:
+  'Who just had a Birthday?',
+  'Who is the youngest?',
+  'Who is the oldest'
+]; // end of goFirst array
 
 
 /***** OBJECT CONSTRUCTOR *****/
@@ -49,8 +58,8 @@ function Game (name, numPlayers, minTime, maxTime, lookOfGame, difficulty) { // 
   this.numPlayers = numPlayers; // the number of players supported by the game
   this.minTime = minTime; // the minimum amount of time it can take to play
   this.maxTime = maxTime; // the maximum amount of time it can take to play
-  this.lookOfGame = lookOfGame; // does the game have a good theme / art? (y/n)
-  this.difficultyLvl = difficulty; // the difficulty of the game on a scale of 1 to 5
+  this.looksGood = lookOfGame; // does the game have a good theme / art? (y/n)
+  this.difficulty = difficulty; // the difficulty of the game on a scale of 1 to 5
 } // end Game constructor
 
 
@@ -92,7 +101,7 @@ Game.prototype.looksMatch = function (formLooks) { // create new method artMatch
 
 
 // function: add an object to the passing array if it passes every test
-var addIfPassing = function (gameObject, formPlayers, formTime, formCompetitive, formLooks) { // create new function addIfPassing, where:
+var addIfPassing = function (gameObject, formPlayers, formTime, formLooks) { // create new function addIfPassing, where:
   if (gameObject.prototype.playersMatch (formPlayers) // if the game supports the right amount of players...
     && gameObject.prototype.timesMatch (formTime) // and the game supports the right amount of time...
     && gameObject.prototype.looksMatch (formLooks)) { // and the game fits the user's art preferences...
@@ -102,10 +111,10 @@ var addIfPassing = function (gameObject, formPlayers, formTime, formCompetitive,
 
 
 // function: generate the array of passing games
-var updatePassingArray = function (formPlayers, formTime, formCompetitive, formLooks){ // create new function updatePassingArray, where:
+var updatePassingArray = function (formPlayers, formTime, formLooks){ // create new function updatePassingArray, where:
   passingArray = []; // reset the passing array
   for (var gameIndex = 0; gameIndex < gameArray.length; gameIndex++){ // for every game...
-    addIfPassing(gameArray[gameIndex], formPlayers, formTime, formCompetitive, formLooks); // add object to the passing array if it passes
+    addIfPassing(gameArray[gameIndex], formPlayers, formTime, formLooks); // add object to the passing array if it passes
   } // end for
 } // end function updatePassingArray
 
@@ -126,7 +135,7 @@ var sortByDifficulty = function (passingArray, formDifficulty) { // create new f
     do { // run this code...
         swapped = false; // set swapped to false
         for (var i = 0; i < passingArray.length - 1; i++) { // for every game that passed the test
-            if (flipSign (passingArray[i].difficulty - formDifficulty) > flipSign (passingArray[i + 1].difficulty - formDifficulty)) { // if the current index is farther away from the input difficulty than the next index...
+            if (flipSign(passingArray[i].difficulty - formDifficulty) > flipSign(passingArray[i + 1].difficulty - formDifficulty)) { // if the current index is farther away from the input difficulty than the next index...
                 var temp = passingArray[i]; // place the value of the current index in a temporary location
                 passingArray[i] = passingArray[i + 1]; // replace the current index spot with the next index
                 passingArray[i + 1] = temp; // replace the next index spot with the value from the temporary location
@@ -135,6 +144,31 @@ var sortByDifficulty = function (passingArray, formDifficulty) { // create new f
         } // end for loop
     } while (swapped); // ...as long as swapped remains true by the end of the loop
 } // end function sortByDifficulty
+
+
+function createCell (property, parent) {
+  var td = document.createElement('td');
+  td.innerHTML = property;
+  parent.appendChild(td);
+}
+
+
+function gameToTable() {
+
+  document.getElementById('results-table').innerHTML = '';
+  var newRow;
+  for (var i = 0; i < gameArray.length; i++) {
+    newRow = document.createElement('tr');
+    console.log('this is the table', table);
+    createCell (gameArray[i].name, newRow);
+    createCell (gameArray[i].numPlayers, newRow);
+    createCell (gameArray[i].minTime, newRow);
+    createCell (gameArray[i].maxTime, newRow);
+    createCell (gameArray[i].looksGood, newRow);
+    createCell (gameArray[i].difficulty, newRow);
+    table.appendChild(newRow);
+  }
+}
 
 
 /**** EVENT LISTENERS *****/
@@ -146,18 +180,17 @@ var sortByDifficulty = function (passingArray, formDifficulty) { // create new f
 ******************************************************************************/
 
 
-/* TODO ***********************************************************************
+/* DONE ***********************************************************************
 * add event listener for the submission button on the search form. This is    *
 * the form that will be used for both the "Let's Roll" page and the game      *
 * recommendations page.                                                       *
 ******************************************************************************/
 
-
-button.addEventListener ('click', gameInput); // when the form submission button is clicked, run the gameInput function
-
-
-mainButton.addEventListener('click', gameSearch);
-
+if (button) {
+  button.addEventListener ('click', gameInput); // when the input submission button is clicked, run the gameInput function
+} else {
+  mainButton.addEventListener('click', gameSearch); // when the search button is clicked, run the gameSearch function
+}
 
 
 /***** EVENT HANDLERS *****/
@@ -179,6 +212,8 @@ function gameInput (event) { // create new function gameInput, where:
     ) // end new game object
   ); // end pushing to array
   form.reset(); // make the form ready for additional input
+  gameToTable();
+  localStorage.games = JSON.stringify(gameArray);
 } // end function gameInput
 
 
@@ -187,12 +222,13 @@ function gameSearch (event) { // create new function gameSearch, where:
  event.preventDefault(); // prevent the page from refreshing
  // get information from the form questions:
  var searchNumPlayers = event.target.form.elements[0].value; // Number of players
- var searchMaxTime = event.target.form.elements[1].value; // Max time you can play
+ var searchTime = event.target.form.elements[1].value; // Max time you can play
  var searchDifficulty = event.target.form.elements[2].value; // Difficult level (1 - 5)
  var searchLooks = event.target.form.elements[3].value; // Care about the look of the game?
- updatePassingArray(searchNumPlayers, searchMaxTime, searchLooks); // update the objects in the array of "passing" games
+ // form.reset();
+ updatePassingArray(searchNumPlayers, searchTime, searchLooks); // update the objects in the array of "passing" games
  sortByDifficulty(passingArray, searchDifficulty); // sort those games by difficulty
- // TODO: function to output passingArray into a table
+ gameToTable();
 } // end function gameSearch
 
 
