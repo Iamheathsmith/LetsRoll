@@ -24,7 +24,7 @@
     </header>
 
     <main>
-      <form class="asking-form">
+      <form class="input-form">
         <ul class="form-left">
           <li class="form-li">Number of Players:
             <select name="num-0f-player" required>
@@ -54,7 +54,8 @@
               <option value="dif-five">level 5</option>
             </select>
           </li>
-          <li class="form-li">Care about the look of game?
+
+            <li class="form-li">Care about the look of game?
             <select name="look_Of-Game">
               <option value="" selected>please select</option>
               <option value="Yes">YES, it does Matter</option>
@@ -67,12 +68,22 @@
         </div>
       </form>
 
-      <section class="results">
-        <h4>** This is what we Recommend **</h4>
+      <table class="results">
+        <h4>** Your Games **</h4>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Number of Players</th>
+              <th>Min time</th>
+              <th>Max time</th>
+              <th>Looks nice</th>
+              <th>Difficulty level</th>
+            </tr>
+          </thead>
         <tbody id="results-table">
           <!--table content dynamically generrated in JS-->
         </tbody>
-      </section>
+      </table>
 
       <footer>
         <section class="footer">
