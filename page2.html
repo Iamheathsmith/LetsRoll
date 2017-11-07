@@ -47,11 +47,11 @@
           </li>
         </ul>
         <ul class="form-right">
-          <li class="form-li">Care about the look of game?
+          <li class="form-li">Does the game look nice?
             <select name="look_Of-Game">
               <option value="" selected>please select</option>
-              <option value="Yes">YES, it does Matter</option>
-              <option value="NO">NO, it does not Matter</option>
+              <option value="Yes">YES, it does.</option>
+              <option value="NO">NO, it does not.</option>
             </select>
           </li>
           <li class="form-li">Difficulty Level:
@@ -75,12 +75,22 @@
       </form>
 
 
-      <section class="results">
+      <table class="results">
         <h4>** Your Games **</h4>
+        <thead>
+          <tr>
+            <th>Game name</th>
+            <th>Number of Players</th>
+            <th>Min time</th>
+            <th>looks nice</th>
+            <th>difficulty level</th>
+            <th>Max time</th>
+          </tr>
+        </thead>
         <tbody id="results-table">
           <!--table content dynamically generrated in JS-->
         </tbody>
-      </section>
+      </table>
 
       <footer>
         <section class="footer">
