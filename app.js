@@ -7,7 +7,6 @@ var whoGoesFirst = function () {
   whoGoesFirst ();
 };
 
-
 var button = document.getElementById('btn');
 var form = document.getElementById('input-form');
 var goesFirst = document.getElementById('goes_first');

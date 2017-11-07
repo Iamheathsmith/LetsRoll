@@ -55,12 +55,14 @@ a {
   width: 100px;
 }
 
-.header-right img {
+.header-right img:active {
+  position: relative;
   margin-top: 10px;
-  width: 50px;
-  height: 50px;
   margin-left: 25px;
+  transform: rotate(1080deg);
+  transition: 2s;
 }
+
 
 .asking-form {
  background-color: #F6FAFA;
@@ -143,6 +145,7 @@ h5 {
   padding: 40px;
   font-size: 20px;
 }
+
 
 /*
 CSS FOR MEEPLE SPIN
