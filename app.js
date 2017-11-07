@@ -3,6 +3,7 @@
 
 var button = document.getElementById('btn');
 var form = document.getElementById('input-form');
+var goesFirst = document.getElementById('goes_first');
 
 var gameArray = [];
 
@@ -67,7 +68,7 @@ Game.prototype.playersMatch = function (formPlayers) {
     } // end if
   } // end for
   return false; // if no hours match, return false
-} // end playersMatch method
+}; // end playersMatch method
 
 
 Game.prototype.timesMatch = function (formTime) {
@@ -76,7 +77,7 @@ Game.prototype.timesMatch = function (formTime) {
   } else { // otherwise...
     return false; // return false
   } // end if else
-} // end timesMatch method
+}; // end timesMatch method
 
 
 Game.prototype.coopMatch = function (formCompetitive) {
@@ -85,7 +86,7 @@ Game.prototype.coopMatch = function (formCompetitive) {
   } else { // otherwise...
     return false; // return false
   } // end if else
-} // end coopMatch method
+}; // end coopMatch method
 
 
 // method: match the form input to the stored value
@@ -95,7 +96,7 @@ Game.prototype.artMatch = function (formLooks) {
   } else { // otherwise...
     return false; // return false
   } // end if else
-} // end artMatch method
+}; // end artMatch method
 
 
 /***** HELPER FUNCTIONS *****/
@@ -109,7 +110,7 @@ var addIfPassing = function (gameObject, formPlayers, formTime, formCompetitive,
     && gameObject.prototype.artMatch(formLooks)) { // if the game passes all of the tests...
     passingArray.push(gameObject); // add that game to the array
   } // end if
-} // end function addIfPassing
+}; // end function addIfPassing
 
 
 // function: generate the array of passing games
@@ -118,7 +119,7 @@ var updatePassingArray = function (formPlayers, formTime, formCompetitive, formL
   for (var gameIndex = 0; gameIndex < gameArray.length; gameIndex++){ // for every game...
     addIfPassing(gameArray[gameIndex], formPlayers, formTime, formCompetitive, formLooks); // add object to the passing array if it passes
   } // end for
-} // end function updatePassingArray
+}; // end function updatePassingArray
 
 
 // function: return a positive number regardless of the sign of the input number
@@ -128,26 +129,31 @@ var flipSign = function (integer) {
   } else { // if the integer is already positive
     return integer; // return it as-is
   } // end if else
-} // end function flipSign
+}; // end function flipSign
 
 
 // function: sorts the array of passing games by difficulty, with the top being the closest difficulty to the desired difficulty
 var sortByDifficulty = function (passingArray, formDifficulty) {
-    var swapped; // declare variable to keep track of if swaps were made (starts as false)
-    do { // run this code:
-        swapped = false; // set swapped to false
-        for (var i = 0; i < passingArray.length - 1; i++) { // for every game that passed the test
-            if (flipSign(passingArray[i] - formDifficulty) > flipSign(passingArray[i + 1] - formDifficulty)) { // if the current index is farther away from the input difficulty than the next index...
-                var temp = passingArray[i]; // place the value of the current index in a temporary location
-                passingArray[i] = passingArray[i + 1]; // replace the current index spot with the next index
-                passingArray[i + 1] = temp; // replace the next index spot with the value from the temporary location
-                swapped = true; // indicate that a swap was made
-            } // end if
-        } // end for loop
-    } while (swapped); // ...as long as swapped remains true by the end of the loop
-} // end function sortByDifficulty
+  var swapped; // declare variable to keep track of if swaps were made (starts as false)
+  do { // run this code:
+    swapped = false; // set swapped to false
+    for (var i = 0; i < passingArray.length - 1; i++) { // for every game that passed the test
+      if (flipSign(passingArray[i] - formDifficulty) > flipSign(passingArray[i + 1] - formDifficulty)) { // if the current index is farther away from the input difficulty than the next index...
+        var temp = passingArray[i]; // place the value of the current index in a temporary location
+        passingArray[i] = passingArray[i + 1]; // replace the current index spot with the next index
+        passingArray[i + 1] = temp; // replace the next index spot with the value from the temporary location
+        swapped = true; // indicate that a swap was made
+      } // end if
+    } // end for loop
+  } while (swapped); // ...as long as swapped remains true by the end of the loop
+}; // end function sortByDifficulty
 
-var goFirst = ['Who just had a Birtday?', 'Who is the youngest?', 'Who is the oldest'];
 
-var randomFirst = goFirst[Math.floor(Math.random() * goFirst.length)];
+// ********************** Who goes first button ***********************
 
+function startGame(){
+  var goFirst = ['Who just had a Birtday?', 'Who is the youngest?', 'Who is the oldest', 'who has the largest shoe size', 'who is the tallest', 'last one to do "noes goes"'];
+  var randomFirst = goFirst[Math.floor(Math.random() * goFirst.length)];
+  alert (randomFirst);
+};
+goesFirst.addEventListener('click', startGame);
