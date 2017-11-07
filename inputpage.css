@@ -18,6 +18,7 @@ main {
    border-bottom-right-radius: 5px;
  }
 
+
 a {
   color: black;
 }
@@ -62,14 +63,27 @@ a {
   margin-left: 25px;
 }
 
-.asking-form {
+
+#input-form {
  background-color: #F6FAFA;
  border: 1px solid black;
  width: 800px;
- height: 220px;
+ height: 320px;
  border-radius: 30px;
  margin: 0 auto;
  margin-top: 50px;
+}
+
+.input-center {
+  padding: 10px;
+  clear: both;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 5px;
+  display: table;
 }
 
 .form-left {
@@ -115,6 +129,8 @@ a {
 }
 
 h4 {
+  text-align: center;
+  margin-top: 40px;
   font-size: 24px;
   padding-top: 10px;
 }
@@ -143,13 +159,3 @@ h5 {
   padding: 40px;
   font-size: 20px;
 }
-
-/*
-CSS FOR MEEPLE SPIN
-needs to be added
-
-img:active {
-  transition: 2s;
-  transform: rotate(1080deg);
-}
-*/

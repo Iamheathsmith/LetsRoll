@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Lets Roll!!!!!</title>
     <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="inputpage.css">
   </head>
 
   <body>
@@ -19,18 +19,18 @@
         </section>
         <section class="header-right">
           <h3>Who goes first!</h3>
-            <div>
-              <button id="goFirstBtn" type="button" onClick="whoGoesFirst()">Click Me</button>
-            </div>
-          <img id="goes_first" src="img/meeple.png">
+          <img id="goes_first" onclick="startGame()" src="img/meeple.png">
         </section>
     </header>
 
     <main>
-      <form class="asking-form">
+      <form id="input-form">
         <ul class="form-left">
+          <li class="form-li">Name of Game to be Added:
+            <input type="text" name="game_name" required>
+          </li>
           <li class="form-li">Number of Players:
-            <select name="num-0f-player" required>
+            <select name="num_of_player">
               <option value="none-players" selected>please select</option>
               <option value="num-two">2 players</option>
               <option value="num-three">3 players</option>
@@ -41,14 +41,21 @@
               <option value="num-eight">8 players</option>
             </select>
           </li>
-          <li class="form-li">How long can you Play?:
-              <input type="number" id="time-of-play" name="timePlay" required>
-              <label>Minutes.</label>
+          <li class="form-li">Min time you can play?:
+            <input type="number" name="min_time"  required>
+            <label>Minutes.</label>
           </li>
         </ul>
         <ul class="form-right">
+          <li class="form-li">Does the game look nice?
+            <select name="look_Of-Game">
+              <option value="" selected>please select</option>
+              <option value="Yes">YES, it does.</option>
+              <option value="NO">NO, it does not.</option>
+            </select>
+          </li>
           <li class="form-li">Difficulty Level:
-            <select name="difficulty-lvl" required>
+            <select name="difficulty_lvl">
               <option value="" selected>please select</option>
               <option value="dif-one">level 1</option>
               <option value="dif-two">level 2</option>
@@ -57,25 +64,33 @@
               <option value="dif-five">level 5</option>
             </select>
           </li>
-          <li class="form-li">Care about the look of game?
-            <select name="look_Of-Game">
-              <option value="" selected>please select</option>
-              <option value="Yes">YES, it does Matter</option>
-              <option value="NO">NO, it does not Matter</option>
-            </select>
+          <li class="form-li">Max time you can play:
+            <input type="number" name="max_time" required>
+            <label>Minutes.</label>
           </li>
         </ul>
         <div class="button">
-           <button id="btn_main" type="click">LETS ROLL!</button>
+           <button id="btn" type="click">Add Game</button>
         </div>
       </form>
 
-      <section class="results">
-        <h4>** This is what we Recommend **</h4>
+
+      <table class="results">
+        <h4>** Your Games **</h4>
+        <thead>
+          <tr>
+            <th>Game name</th>
+            <th>Number of Players</th>
+            <th>Min time</th>
+            <th>looks nice</th>
+            <th>difficulty level</th>
+            <th>Max time</th>
+          </tr>
+        </thead>
         <tbody id="results-table">
           <!--table content dynamically generrated in JS-->
         </tbody>
-      </section>
+      </table>
 
       <footer>
         <section class="footer">
@@ -92,11 +107,3 @@
     <script src="app.js"></script>
   </body>
 </html>
-
-<!-- click for meeple spin -->
-<!--
-<a>
-  <img src="http://www.meeplesource.com/prodimages/CharSticker8a.png">
-</a>
--->
-<!-- end of meeple spin -->
