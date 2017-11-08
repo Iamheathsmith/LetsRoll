@@ -20,7 +20,7 @@ function spinner() {
 spinner();
 
 function startGame(){
-  var goFirst = ['Who just had a Birtday?', 'Who is the youngest?', 'Who is the oldest', 'who has the largest shoe size', 'who is the tallest', 'last one to do "noes goes"'];
+  var goFirst = ['Who just had a Birtday?', 'Who is the youngest?', 'Who is the oldest', 'who has the largest shoe size', 'who is the tallest', 'last one to do "noes goes"', 'last person to clean there toilet', 'who must recently finished a noval', 'short man goes first', 'last person to go for a run'];
   var randomFirst = goFirst[Math.floor(Math.random() * goFirst.length)];
   alert (randomFirst);
 };
