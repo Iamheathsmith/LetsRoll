@@ -353,4 +353,5 @@ function removeGame(event) {
     }
   }
   gameCollection();
+  saveGames();
 }
