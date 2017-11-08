@@ -12,7 +12,7 @@ main {
  }
 
  header {
-   background-image: url("img/header.jpg");
+   background-image: url("img/Monopoly-Board copy.jpg");
    padding-bottom: 10px;
    border-bottom-left-radius: 5px;
    border-bottom-right-radius: 5px;
@@ -52,7 +52,7 @@ a {
   bottom: 80px;
   float: right;
   margin-right: 30px;
-  width: 100px;
+  width: 120px;
 }
 
 .header-right img {
@@ -62,17 +62,35 @@ a {
   margin-left: 25px;
 }
 
+/*.header-right img:active {
+  transform: rotate(2160deg);
+  transition-duration: all 3s;
+}*/
+
+.header-right img:hover {
+  transition: .5s;
+  margin-left: -40px;
+  margin-bottom: -130px;
+  width: 190px;
+  height: 190px;
+}
+
 .header-right img:active {
-  transition: 2s;
-  transform: rotate(1080deg);
+  transition: 3.2s;
+  transform: rotate(4320deg);
+}
+
+h3 {
+  color: red;
+  font-family: helvetica;
 }
 
 
-.asking-form {
+#input-form {
  background-color: #F6FAFA;
  border: 1px solid black;
  width: 800px;
- height: 220px;
+ height: 240px;
  border-radius: 30px;
  margin: 0 auto;
  margin-top: 50px;
@@ -122,7 +140,8 @@ a {
 
 h4 {
   font-size: 24px;
-  padding-top: 10px;
+  padding-top: 30px;
+  text-align: center;
 }
 
 .footer {
@@ -150,13 +169,14 @@ h5 {
   font-size: 20px;
 }
 
-
-/*
-CSS FOR MEEPLE SPIN
-needs to be added
-
-img:active {
-  transition: 2s;
-  transform: rotate(1080deg);
+thead tr th {
+ border: 1px solid red;
+ padding: 15px;
+ text-align: left;
 }
-*/
+
+tbody tr td {
+ border: 1px solid red;
+ padding: 15px;
+ text-align: left;
+}

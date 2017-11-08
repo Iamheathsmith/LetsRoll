@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
   <head>
     <meta charset="utf-8">
@@ -30,20 +31,33 @@
             <input type="text" name="game_name" required>
           </li>
           <li class="form-li">Number of Players:
-            <select name="num_of_player">
-              <option value="none-players" selected>please select</option>
-              <option value="num-two">2 players</option>
-              <option value="num-three">3 players</option>
-              <option value="num-four">4 players</option>
-              <option value="num-five">5 players</option>
-              <option value="num-six">6 players</option>
-              <option value="num-seven">7 players</option>
-              <option value="num-eight">8 players</option>
-            </select>
+            <div>
+
+              <select name="min-players" required>
+                <option value="none-players" selected>Minimum</option>
+                <option value="2">2 players</option>
+                <option value="3">3 players</option>
+                <option value="4">4 players</option>
+                <option value="5">5 players</option>
+                <option value="6">6 players</option>
+                <option value="7">7 players</option>
+                <option value="8">8 players</option>
+              </select>
+              <select name="max-players" required>
+                <option value="none-players" selected>Maximum</option>
+                <option value="2">2 players</option>
+                <option value="3">3 players</option>
+                <option value="4">4 players</option>
+                <option value="5">5 players</option>
+                <option value="6">6 players</option>
+                <option value="7">7 players</option>
+                <option value="8">8 players</option>
+              </select>
+            </div>
           </li>
-          <li class="form-li">Min time you can play?:
-            <input type="number" name="min_time"  required>
-            <label>Minutes.</label>
+          <li class="form-li">Time it takes to play:
+            <input type="number" name="min_time" placeholder="Min time" required>
+            <input type="number" name="max_time" placeholder="Max time" required>
           </li>
         </ul>
         <ul class="form-right">
@@ -57,16 +71,12 @@
           <li class="form-li">Difficulty Level:
             <select name="difficulty_lvl">
               <option value="" selected>please select</option>
-              <option value="dif-one">level 1</option>
-              <option value="dif-two">level 2</option>
-              <option value="dif-three">level 3</option>
-              <option value="dif-four">level 4</option>
-              <option value="dif-five">level 5</option>
+              <option value="1">level 1</option>
+              <option value="2">level 2</option>
+              <option value="3">level 3</option>
+              <option value="4">level 4</option>
+              <option value="5">level 5</option>
             </select>
-          </li>
-          <li class="form-li">Max time you can play:
-            <input type="number" name="max_time" required>
-            <label>Minutes.</label>
           </li>
         </ul>
         <div class="button">
@@ -77,16 +87,18 @@
 
       <table class="results">
         <h4>** Your Games **</h4>
-        <thead>
-          <tr>
-            <th>Game name</th>
-            <th>Number of Players</th>
-            <th>Min time</th>
-            <th>looks nice</th>
-            <th>difficulty level</th>
-            <th>Max time</th>
-          </tr>
-        </thead>
+
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Minimum Players</th>
+              <th>Maximum Players</th>
+              <th>Min time</th>
+              <th>Max time</th>
+              <th>Looks nice</th>
+              <th>Difficulty level</th>
+            </tr>
+          </thead>
         <tbody id="results-table">
           <!--table content dynamically generrated in JS-->
         </tbody>

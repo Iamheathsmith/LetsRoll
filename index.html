@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
   <head>
     <meta charset="utf-8">
@@ -24,19 +25,19 @@
     </header>
 
     <main>
-      <form class="asking-form">
+      <form id="input-form">
         <ul class="form-left">
           <li class="form-li">Number of Players:
-            <select name="num-0f-player" required>
-              <option value="none-players" selected>please select</option>
-              <option value="num-two">2 players</option>
-              <option value="num-three">3 players</option>
-              <option value="num-four">4 players</option>
-              <option value="num-five">5 players</option>
-              <option value="num-six">6 players</option>
-              <option value="num-seven">7 players</option>
-              <option value="num-eight">8 players</option>
-            </select>
+              <select name="num-of-players" required>
+                <option value="none-players" selected>Number of Players</option>
+                <option value="2">2 players</option>
+                <option value="3">3 players</option>
+                <option value="4">4 players</option>
+                <option value="5">5 players</option>
+                <option value="6">6 players</option>
+                <option value="7">7 players</option>
+                <option value="8">8 players</option>
+              </select>
           </li>
           <li class="form-li">How long can you Play?:
               <input type="number" id="time-of-play" name="timePlay" required>
@@ -47,14 +48,15 @@
           <li class="form-li">Difficulty Level:
             <select name="difficulty-lvl" required>
               <option value="" selected>please select</option>
-              <option value="dif-one">level 1</option>
-              <option value="dif-two">level 2</option>
-              <option value="dif-three">level 3</option>
-              <option value="dif-four">level 4</option>
-              <option value="dif-five">level 5</option>
+              <option value="1">level 1</option>
+              <option value="2">level 2</option>
+              <option value="3">level 3</option>
+              <option value="4">level 4</option>
+              <option value="5">level 5</option>
             </select>
           </li>
-          <li class="form-li">Care about the look of game?
+
+            <li class="form-li">Care about the look of game?
             <select name="look_Of-Game">
               <option value="" selected>please select</option>
               <option value="Yes">YES, it does Matter</option>
@@ -67,12 +69,23 @@
         </div>
       </form>
 
-      <section class="results">
-        <h4>** This is what we Recommend **</h4>
+      <table class="results">
+        <h4>** What We Recommended **</h4>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Min Players</th>
+              <th>Max Players</th>
+              <th>Min time</th>
+              <th>Max time</th>
+              <th>Looks nice</th>
+              <th>Difficulty level</th>
+            </tr>
+          </thead>
         <tbody id="results-table">
           <!--table content dynamically generrated in JS-->
         </tbody>
-      </section>
+      </table>
 
       <footer>
         <section class="footer">
