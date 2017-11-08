@@ -73,11 +73,11 @@ h3 {
 }
 
 
-.input-form {
+#input-form {
  background-color: #F6FAFA;
  border: 1px solid black;
  width: 800px;
- height: 220px;
+ height: 240px;
  border-radius: 30px;
  margin: 0 auto;
  margin-top: 50px;
