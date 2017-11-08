@@ -19,6 +19,7 @@
         </section>
         <section class="header-right">
           <h3>Who goes first!</h3>
+           <img id="goFirstBtn" onclick="startGame()" onclick="spinner()" src="img/CharSticker8a.png">
         </section>
     </header>
 
@@ -30,6 +31,7 @@
           </li>
           <li class="form-li">Number of Players:
             <div>
+
               <select name="min-players" required>
                 <option value="none-players" selected>Minimum</option>
                 <option value="2">2 players</option>
@@ -58,12 +60,11 @@
           </li>
         </ul>
         <ul class="form-right">
-          <li class="form-li">Care about the look of game?
+          <li class="form-li">Does the game look nice?
             <select name="look_Of-Game">
               <option value="" selected>please select</option>
-              <option value="Yes">YES, it does Matter</option>
-              <option value="NO">NO, it does not Matter</option>
-
+              <option value="Yes">YES, it does.</option>
+              <option value="NO">NO, it does not.</option>
             </select>
           </li>
           <li class="form-li">Difficulty Level:
@@ -85,6 +86,7 @@
 
       <table class="results">
         <h4>** Your Games **</h4>
+
           <thead>
             <tr>
               <th>Name</th>

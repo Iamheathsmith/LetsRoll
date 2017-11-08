@@ -9,7 +9,11 @@
 ****************************************************************/ 'use strict';
 
 
+
+
 /***** VARIABLE DECLARATIONS *****/
+
+
 
 
 // DOM calls
@@ -19,6 +23,7 @@ var button = document.getElementById ('btn'); // DOM location of the button for 
 var table = document.getElementById('results-table');
 
 
+
 /* TODO ***********************************************************************
 * add DOM calls for the search form class. This will be used for both the     *
 * "Let's Roll" page and the game recommendations page. The parameters used by *
@@ -26,8 +31,11 @@ var table = document.getElementById('results-table');
 ******************************************************************************/
 
 
+
 var gameArray = [];
 var passingArray = []; // array to hold the objects that pass the filtering tests
+
+
 
 
 // "who goes first?" information
@@ -39,6 +47,7 @@ var goFirst = [ // create new array of different ways to go first, containing:
 
 
 /***** OBJECT CONSTRUCTOR *****/
+
 
 
 function Game (name, minPlayers, maxPlayers, minTime, maxTime, lookOfGame, difficulty) { // construtor for Game objects
@@ -58,6 +67,7 @@ function Game (name, minPlayers, maxPlayers, minTime, maxTime, lookOfGame, diffi
 // method: check if the input amount of players matches the number of players supported by a game
 Game.prototype.playersMatch = function (formPlayers) { // create new method playersMatch, where:
 
+
   if (parseInt(this.minPlayers) <= parseInt(formPlayers) && parseInt(formPlayers) <= parseInt(this.maxPlayers)) {
     return true;
   } else {
@@ -73,7 +83,7 @@ Game.prototype.timesMatch = function (formTime) { // create new method timesMatc
   } else { // otherwise...
     return false; // return false
   } // end if else
-} // end timesMatch method
+}; // end timesMatch method
 
 
 // method: check if the user preference on art matches the aesthetics of the game
@@ -83,7 +93,7 @@ Game.prototype.looksMatch = function (formLooks) { // create new method artMatch
   } else { // otherwise...
     return false; // return false
   } // end if else
-} // end artMatch method
+}; // end artMatch method
 
 
 /***** HELPER FUNCTIONS *****/
@@ -96,7 +106,7 @@ var addIfPassing = function (gameObject, formPlayers, formTime, formLooks) { // 
     && gameObject.looksMatch (formLooks)) { // and the game fits the user's art preferences...
     passingArray.push (gameObject); // add that game to the array passingArray
   } // end if
-} // end function addIfPassing
+}; // end function addIfPassing
 
 
 // function: generate the array of passing games
@@ -105,7 +115,7 @@ var updatePassingArray = function (formPlayers, formTime, formLooks){ // create 
   for (var gameIndex = 0; gameIndex < gameArray.length; gameIndex++){ // for every game...
     addIfPassing(gameArray[gameIndex], formPlayers, formTime, formLooks); // add object to the passing array if it passes
   } // end for
-} // end function updatePassingArray
+}; // end function updatePassingArray
 
 
 // function: return a positive number regardless of the sign of the input number
@@ -115,11 +125,12 @@ var flipSign = function (integer) { // create new function flipSign, where:
   } else { // if the integer is already positive
     return integer; // return it as-is
   } // end if else
-} // end function flipSign
+}; // end function flipSign
 
 
 // function: sorts the array of passing games by difficulty, with the top being the closest difficulty to the desired difficulty
 var sortByDifficulty = function (passingArray, formDifficulty) { // create new function sortByDifficulty, where:
+
     var swapped; // declare variable to keep track of if swaps were made (starts as false)
     do { // run this code...
         swapped = false; // set swapped to false
@@ -153,6 +164,7 @@ function gameCollection() {
   document.getElementById('results-table').innerHTML = '';
   var newRow;
   for (var i = 0; i < gameArray.length; i++) {
+    console.log(event);
     newRow = document.createElement('tr');
     createCell (gameArray[i].name, newRow);
     createCell (gameArray[i].minPlayers, newRow);
@@ -240,6 +252,7 @@ if (button) { // if 'button' exists in HTML...
 function gameInput (event) { // create new function gameInput, where:
   event.preventDefault(); // prevent the page from refreshing
   // get information from the form questions:
+
   var inputName = event.target.form.elements[0].value // Name of the game to be added
   var inputMinPlayers = event.target.form.elements[1].value; // Number of players
   var inputMaxPlayers = event.target.form.elements[2].value; // Number of players
@@ -250,6 +263,7 @@ function gameInput (event) { // create new function gameInput, where:
   gameArray.push ( // add to the gameArray
     new Game ( // create a new game
       inputName, inputMinPlayers, inputMaxPlayers, inputMinTime, inputMaxTime, inputLook, inputDifficulty // with these parameters
+
     ) // end new game object
   ); // end pushing to array
   form.reset(); // make the form ready for additional input
@@ -260,6 +274,7 @@ function gameInput (event) { // create new function gameInput, where:
 
 // function: on search form submission, sort and order the array of games, then output them in a table
 function gameSearch (event) { // create new function gameSearch, where:
+
  event.preventDefault(); // prevent the page from refreshing
  // get information from the form questions:
  var searchNumPlayers = event.target.form.elements[0].value; // Number of players
@@ -274,6 +289,7 @@ function gameSearch (event) { // create new function gameSearch, where:
  sortByDifficulty(passingArray, searchDifficulty); // sort those games by difficulty
  shortenPassingArray();
  searchResults();
+
 } // end function gameSearch
 
 
@@ -286,6 +302,26 @@ function gameSearch (event) { // create new function gameSearch, where:
 // function: pick a random way to decide who goes first
 var randomFirst = function () { // create new function randomFirst, where:
   return goFirst[Math.floor (Math.random() * goFirst.length)]; // output a random item from the goFirst array
+
+}; // end randomFirst function
+
+/***** start button *****/
+
+function spinner() {
+  var toggle = document.getElementById('goFirstBtn');
+  toggle.addEventListener('click', function() {
+    this.setAttribute('class', 'spin');
+  });
+}
+
+spinner();
+
+function startGame() {
+  var goFirst = ['Who just had a Birtday?', 'Who is the youngest?', 'Who is the oldest', 'who has the largest shoe size', 'who is the tallest', 'last one to do "noes goes"'];
+  var randomFirst = goFirst[Math.floor(Math.random() * goFirst.length)];
+  alert (randomFirst);
+};
+
 } // end randomFirst function
 
 
@@ -293,3 +329,4 @@ var randomFirst = function () { // create new function randomFirst, where:
 if (localStorage.numberOfGames !== 0) {
   loadGames();
 }
+
