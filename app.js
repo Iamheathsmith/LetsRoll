@@ -26,12 +26,7 @@ var table = document.getElementById('results-table');
 ******************************************************************************/
 
 
-// object arrays
-if (localStorage.games) {
-  var gameArray = JSON.parse(localStorage.games);
-} else {
-  var gameArray = [];
-}
+var gameArray = [];
 var passingArray = []; // array to hold the objects that pass the filtering tests
 
 
@@ -68,18 +63,25 @@ function Game (name, numPlayers, minTime, maxTime, lookOfGame, difficulty) { // 
 
 // method: check if the input amount of players matches the number of players supported by a game
 Game.prototype.playersMatch = function (formPlayers) { // create new method playersMatch, where:
-  for (var i = 0; i < this.numPlayers.length; i++) { // for every possible number of players...
-    if (formPlayers === this.numPlayers[i]) { // if that number is equal to the desired number...
-      return true; // return true
-    } // end if
-  } // end for
-  return false; // if no hours match, return false
+
+  if (formPlayers === this.numPlayers) {
+    return true;
+  } else {
+    return false;
+  }
+
+  // for (var i = 0; i < this.numPlayers.length; i++) { // for every possible number of players...
+  //   if (formPlayers === this.numPlayers) { // if that number is equal to the desired number...
+  //     return true; // return true
+  //   } // end if
+  // } // end for
+  // return false; // if no hours match, return false
 } // end playersMatch method
 
 
 // method: check if the input time to play matches the time range supported by the a game
 Game.prototype.timesMatch = function (formTime) { // create new method timesMatch, where:
-  if (this.minTime <= formTime && formTime <= this.maxTime) { // if the desired time is within to the game range...
+  if (parseInt(this.minTime) <= formTime && formTime <= parseInt(this.maxTime)) { // if the desired time is within to the game range...
     return true; // return true
   } else { // otherwise...
     return false; // return false
@@ -89,7 +91,7 @@ Game.prototype.timesMatch = function (formTime) { // create new method timesMatc
 
 // method: check if the user preference on art matches the aesthetics of the game
 Game.prototype.looksMatch = function (formLooks) { // create new method artMatch, where:
-  if (formLooks = this.looksGood) { // if the game is the desired type...
+  if (formLooks === this.looksGood) { // if the game is the desired type...
     return true; // return true
   } else { // otherwise...
     return false; // return false
@@ -102,9 +104,10 @@ Game.prototype.looksMatch = function (formLooks) { // create new method artMatch
 
 // function: add an object to the passing array if it passes every test
 var addIfPassing = function (gameObject, formPlayers, formTime, formLooks) { // create new function addIfPassing, where:
-  if (gameObject.prototype.playersMatch (formPlayers) // if the game supports the right amount of players...
-    && gameObject.prototype.timesMatch (formTime) // and the game supports the right amount of time...
-    && gameObject.prototype.looksMatch (formLooks)) { // and the game fits the user's art preferences...
+  console.log('game:', gameObject);
+  if (gameObject.playersMatch (formPlayers) // if the game supports the right amount of players...
+    && gameObject.timesMatch (formTime) // and the game supports the right amount of time...
+    && gameObject.looksMatch (formLooks)) { // and the game fits the user's art preferences...
     passingArray.push (gameObject); // add that game to the array passingArray
   } // end if
 } // end function addIfPassing
@@ -135,7 +138,7 @@ var sortByDifficulty = function (passingArray, formDifficulty) { // create new f
     do { // run this code...
         swapped = false; // set swapped to false
         for (var i = 0; i < passingArray.length - 1; i++) { // for every game that passed the test
-            if (flipSign(passingArray[i].difficulty - formDifficulty) > flipSign(passingArray[i + 1].difficulty - formDifficulty)) { // if the current index is farther away from the input difficulty than the next index...
+            if (flipSign(passingArray[i].difficulty - parseInt(formDifficulty)) > flipSign(passingArray[i + 1].difficulty - parseInt(formDifficulty))) { // if the current index is farther away from the input difficulty than the next index...
                 var temp = passingArray[i]; // place the value of the current index in a temporary location
                 passingArray[i] = passingArray[i + 1]; // replace the current index spot with the next index
                 passingArray[i + 1] = temp; // replace the next index spot with the value from the temporary location
@@ -154,12 +157,10 @@ function createCell (property, parent) {
 
 
 function gameToTable() {
-
   document.getElementById('results-table').innerHTML = '';
   var newRow;
   for (var i = 0; i < gameArray.length; i++) {
     newRow = document.createElement('tr');
-    console.log('this is the table', table);
     createCell (gameArray[i].name, newRow);
     createCell (gameArray[i].numPlayers, newRow);
     createCell (gameArray[i].minTime, newRow);
@@ -169,6 +170,38 @@ function gameToTable() {
     table.appendChild(newRow);
   }
 }
+
+
+/***** LOCAL STORAGE ****/
+
+
+var saveGames = function () {
+  localStorage.numberOfGames = 0;
+  for (var k = 0; k < gameArray.length; k++) {
+    localStorage['game ' + k + ' name'] = gameArray[k].name;
+    localStorage['game ' + k + ' number of players'] = gameArray[k].numPlayers;
+    localStorage['game ' + k + ' minimum time'] = gameArray[k].minTime;
+    localStorage['game ' + k + ' maximum time'] = gameArray[k].maxTime;
+    localStorage['game ' + k + ' looks'] = gameArray[k].looksGood;
+    localStorage['game ' + k + ' difficulty'] = gameArray[k].difficulty;
+    localStorage.numberOfGames++;
+  }
+}
+
+var loadGames = function () {
+  for (var l = 0; l < localStorage.numberOfGames; l++) { // for every game in local storage
+    gameArray.push( // add to the game array
+      new Game ( // a new game, with parameters:
+        localStorage['game ' + l + ' name'],
+        localStorage['game ' + l + ' number of players'],
+        localStorage['game ' + l + ' minimum time'],
+        localStorage['game ' + l + ' maximum time'],
+        localStorage['game ' + l + ' looks'],
+        localStorage['game ' + l + ' difficulty']
+      ) // end of new game
+    ); // end of push
+  } // end for loop
+} // end loadGames function
 
 
 /**** EVENT LISTENERS *****/
@@ -186,11 +219,12 @@ function gameToTable() {
 * recommendations page.                                                       *
 ******************************************************************************/
 
-if (button) {
+
+if (button) { // if 'button' exists in HTML...
   button.addEventListener ('click', gameInput); // when the input submission button is clicked, run the gameInput function
-} else {
+} else { // otherwise
   mainButton.addEventListener('click', gameSearch); // when the search button is clicked, run the gameSearch function
-}
+} // end if
 
 
 /***** EVENT HANDLERS *****/
@@ -213,7 +247,7 @@ function gameInput (event) { // create new function gameInput, where:
   ); // end pushing to array
   form.reset(); // make the form ready for additional input
   gameToTable();
-  localStorage.games = JSON.stringify(gameArray);
+  saveGames();
 } // end function gameInput
 
 
@@ -225,7 +259,10 @@ function gameSearch (event) { // create new function gameSearch, where:
  var searchTime = event.target.form.elements[1].value; // Max time you can play
  var searchDifficulty = event.target.form.elements[2].value; // Difficult level (1 - 5)
  var searchLooks = event.target.form.elements[3].value; // Care about the look of the game?
+
+ //TODO: fix this! Form returns as NULL
  // form.reset();
+
  updatePassingArray(searchNumPlayers, searchTime, searchLooks); // update the objects in the array of "passing" games
  sortByDifficulty(passingArray, searchDifficulty); // sort those games by difficulty
  gameToTable();
@@ -251,3 +288,10 @@ function gameSearch (event) { // create new function gameSearch, where:
 var randomFirst = function () { // create new function randomFirst, where:
   return goFirst[Math.floor (Math.random() * goFirst.length)]; // output a random item from the goFirst array
 } // end randomFirst function
+
+
+// object arrays
+if (localStorage.numberOfGames !== 0) {
+  console.log('test');
+  loadGames();
+}
