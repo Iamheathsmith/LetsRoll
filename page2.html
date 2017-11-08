@@ -4,35 +4,39 @@
   <head>
     <meta charset="utf-8">
     <title>Lets Roll!!!!!</title>
+    <link href="https://fonts.googleapis.com/css?family=Acme|Lobster|Permanent+Marker" rel="stylesheet">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="inputpage.css">
   </head>
 
   <body>
-    <header>
+    <header class="header">
+      <div class="header-box">
         <section class="header-left">
           <a href="index.html">
             <img src="img/dice3.png">
           </a>
         </section>
         <section class="header-middle">
-          <a href="index.html"><h2>Main page</h2></a>
-          <a href="page2.html"><h2>My Games</h2></a>
-          <a href="blank"><h2>Recommended Games</h2></a>
+          <h1>Let's Roll</h1>
+          <a href="index.html"><h2 class="not-picked">Pick a Game</h2></a>
+          <a href="page2.html"><h2 class="seletor">My Games</h2></a>
+          <a href="blank"><h2 class="not-picked">Game Recommendations</h2></a>
         </section>
         <section class="header-right">
           <h3>Who goes first!</h3>
             <img id="goFirstBtn" onclick="startGame()" onclick="spinner()" src="img/CharSticker8a.png">
         </section>
+      </div>
     </header>
 
     <main>
       <form id="input-form">
         <ul class="form-left">
-          <li class="form-li">Name of Game to be Added:
+          <li class="form-li"><h6>Name of Game to be Added:</h6>
             <input type="text" name="game_name" >
           </li>
-          <li class="form-li">Number of Players:
+          <li class="form-li"><h6>Number of Players:</h6>
             <div>
               <select name="min-players">
                 <option value="none-players" selected>Minimum</option>
@@ -56,20 +60,20 @@
               </select>
             </div>
           </li>
-          <li class="form-li">Time it takes to play:
+          <li class="form-li"><h6>Time it takes to play:</h6>
             <input type="number" name="min_time" placeholder="Min time">
             <input type="number" name="max_time" placeholder="Max time">
           </li>
         </ul>
         <ul class="form-right">
-          <li class="form-li">Does the game look nice?
+          <li class="form-li"><h6>Does the game look nice?</h6>
             <select name="look_Of-Game">
               <option value="" selected>please select</option>
               <option value="Yes">YES, it does.</option>
               <option value="NO">NO, it does not.</option>
             </select>
           </li>
-          <li class="form-li">Difficulty Level:
+          <li class="form-li"><h6>Difficulty Level:</h6>
             <select name="difficulty_lvl">
               <option value="" selected>please select</option>
               <option value="1">level 1</option>
@@ -80,17 +84,15 @@
             </select>
           </li>
           <li>
-          <li class="form-li">Remove game by Name:
+          <li class="form-li"><h6>Remove game by Name:</h6>
             <input type="text" id="removeItem">
             <button id="removeButton"  type="click" >remove Game</button>
           </li>
-          <li>
-            <div class="button">
-               <button id="btn" type="click">Add Game</button>
-               <button onclick="clearStorage()">Reset list</button>
-            </div>
-          </li>
         </ul>
+        <div class="button">
+           <button id="btn" type="click">Add Game</button>
+           <button onclick="clearStorage()">Reset list</button>
+        </div>
       </form>
 
 
@@ -113,18 +115,19 @@
         </tbody>
       </table>
 
-      <footer>
-        <section class="footer">
-          <div class="footer-left">
-            <h5><a href="blank">Where to buy games</h5>
-          </div>
-          <div class="footer-right">
-            <h5><a href="blank">About Us<h5>
-          </div>
-        </section>
-      </footer>
-
     </main>
+
+    <footer>
+      <section class="footer-box">
+        <div class="footer-left">
+          <a href="https://www.google.com/maps/search/board+games+store/@47.6160058,-122.3696833,13z/data=!3m1!4b1"><h5>Where to buy games</h5></a>
+        </div>
+        <div class="footer-right">
+          <a href="blank"><h5>About Us</h5></a>
+        </div>
+      </section>
+    </footer>
+
     <script src="app.js"></script>
   </body>
 </html>

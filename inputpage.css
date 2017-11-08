@@ -2,25 +2,41 @@
 
 main {
   width: 960px;
-  float: left;
+  margin: auto;
+  margin-top: 200px;
+  align-content: center;
 }
 
  body {
    background-color: #FDFFFD;
-   margin: 0 auto;
-   width: 960px;
+   width: 100%;
+   align-content: center;
  }
 
- header {
-   background-image: url("img/Monopoly-Board copy.jpg");
-   padding-bottom: 10px;
+/* The header CSS items */
+.header-box {
+  width: 960px;
+  margin-left: calc(50% - 480px);
+}
+
+header {
+  position: fixed;
+  top: 0;
+  box-shadow: 0px 0px 4px 1px #222;
+  height: 130px;
+  padding-top: 10px;
+}
+
+ .header {
+   background-color: black;
+   width: 100%;
+   background-size: cover;
+   padding-bottom: 5px;
    border-bottom-left-radius: 3px;
    border-bottom-right-radius: 3px;
  }
 
-a {
-  color: black;
-}
+/* logo part of header */
 
 .header-left img {
   width: 100px;
@@ -37,30 +53,65 @@ a {
   transition: .2s;
 }
 
+/* the tab section in header */
+
 .header-middle {
   text-align: center;
-  margin-right: 50px;
+  margin: 0 auto;
+  width: 660px;
 }
 
 .header-middle h2 {
-  margin-top: 70px;
+  margin-top: 20px;
   text-align: center;
-  background-color: #FF342A;
   display: inline-block;
-  font-style: helvetica;
-  color: black;
+  font-family: "Permanent marker";
   font-size: 24px;
   margin-right: 20px;
-  border-radius: 3px;
-  padding: 3px;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  padding: 5px;
+  padding-bottom: 15px;
+  border-bottom: 2px dashed white;
 }
+
+.not-picked {
+  background-color: black;
+  color: red;
+}
+.seletor {
+  background-color: #FF342A;
+  color: black;
+}
+
+h1 {
+  font-family: "lobster";
+  color: white;
+  font-size: 60px;
+}
+
+h2:link
+{
+  color: black;
+}
+h2:visited
+{
+  color: green;
+}
+
+h2:hover
+{
+  color: white;
+}
+
+ /* the meeple part of header */
 
 .header-right {
   position: relative;
   bottom: 80px;
   float: right;
   margin-right: 30px;
-  width: 120px;
+  width: 130px;
 }
 
 .header-right img {
@@ -85,17 +136,23 @@ a {
 
 h3 {
   color: red;
-  font-family: helvetica;
+  font-family: "Permanent marker";
+}
+
+/* the input section */
+
+h6 {
+  font-family: "acme";
 }
 
 #input-form {
  background-color: #F6FAFA;
  border: 1px solid black;
  width: 800px;
- height: 340px;
+ height: 360px;
  border-radius: 3px;
  margin: 0 auto;
- margin-top: 50px;
+ margin-top: 150px;
 }
 
 .input-center {
@@ -132,15 +189,25 @@ h3 {
 }
 
 .button {
-  padding-top: 10px;
+  padding-top: 20px;
   clear: both;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
 }
 
+ /* the results talbe */
+
+ th {
+   font-family: "Permanent marker";
+ }
+
+ td {
+   font-family: "Permanent marker";
+ }
+
 .results {
-  margin-top: 30px;
+  margin-top: 80px;
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 100px;
@@ -152,17 +219,38 @@ h3 {
   border: 1px solid black;
 }
 
+thead tr th {
+ border: 1px solid red;
+ padding: 15px;
+ text-align: left;
+}
+
+tbody tr td {
+ border: 1px solid red;
+ padding: 15px;
+ text-align: left;
+}
+
 h4 {
   text-align: center;
   margin-top: 40px;
   font-size: 24px;
   padding-top: 10px;
+  font-family: "Permanent marker";
 }
 
-.footer {
-  width: 960px;
+/* footer stuff here */
+
+footer {
+  background-image: url("img/Monopoly-Board copy.jpg");
+  width: 100%;
+  background-size: cover;
   height: 100px;
-  background-color: grey;
+}
+
+.footer-box {
+  width: 960px;
+  margin-left: calc(50% - 480px);
 }
 
 .footer-left {
@@ -182,16 +270,22 @@ h4 {
 h5 {
   padding: 40px;
   font-size: 20px;
+  font-family: "acme";
+  color: white;
+  text-decoration: underline;
 }
 
-thead tr th {
- border: 1px solid red;
- padding: 15px;
- text-align: left;
+h5:link
+{
+  color: white;
 }
 
-tbody tr td {
- border: 1px solid red;
- padding: 15px;
- text-align: left;
+h5:visited
+{
+  color: green;
+}
+
+h5:hover
+{
+  color: red;
 }
