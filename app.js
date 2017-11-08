@@ -41,16 +41,10 @@ var goFirst = [ // create new array of different ways to go first, containing:
 /***** OBJECT CONSTRUCTOR *****/
 
 
-/* TODO ***********************************************************************
-* define final parameters for Game objects. Name, number of players, time to  *
-* play, and difficulty are all required. Other parameters like art style,     *
-* coop vs competitive, etc. are to be decided by the group                    *
-******************************************************************************/
-
-
-function Game (name, numPlayers, minTime, maxTime, lookOfGame, difficulty) { // construtor for Game objects
+function Game (name, minPlayers, maxPlayers, minTime, maxTime, lookOfGame, difficulty) { // construtor for Game objects
   this.name = name; // the title of the game
-  this.numPlayers = numPlayers; // the number of players supported by the game
+  this.minPlayers = minPlayers; // the number of players supported by the game
+  this.maxPlayers = maxPlayers; // the number of players supported by the game
   this.minTime = minTime; // the minimum amount of time it can take to play
   this.maxTime = maxTime; // the maximum amount of time it can take to play
   this.looksGood = lookOfGame; // does the game have a good theme / art? (y/n)
@@ -64,18 +58,11 @@ function Game (name, numPlayers, minTime, maxTime, lookOfGame, difficulty) { // 
 // method: check if the input amount of players matches the number of players supported by a game
 Game.prototype.playersMatch = function (formPlayers) { // create new method playersMatch, where:
 
-  if (formPlayers === this.numPlayers) {
+  if (parseInt(this.minPlayers) <= parseInt(formPlayers) && parseInt(formPlayers) <= parseInt(this.maxPlayers)) {
     return true;
   } else {
     return false;
   }
-
-  // for (var i = 0; i < this.numPlayers.length; i++) { // for every possible number of players...
-  //   if (formPlayers === this.numPlayers) { // if that number is equal to the desired number...
-  //     return true; // return true
-  //   } // end if
-  // } // end for
-  // return false; // if no hours match, return false
 } // end playersMatch method
 
 
@@ -104,7 +91,6 @@ Game.prototype.looksMatch = function (formLooks) { // create new method artMatch
 
 // function: add an object to the passing array if it passes every test
 var addIfPassing = function (gameObject, formPlayers, formTime, formLooks) { // create new function addIfPassing, where:
-  console.log('game:', gameObject);
   if (gameObject.playersMatch (formPlayers) // if the game supports the right amount of players...
     && gameObject.timesMatch (formTime) // and the game supports the right amount of time...
     && gameObject.looksMatch (formLooks)) { // and the game fits the user's art preferences...
@@ -149,6 +135,13 @@ var sortByDifficulty = function (passingArray, formDifficulty) { // create new f
 } // end function sortByDifficulty
 
 
+var shortenPassingArray = function () {
+  while (passingArray.length > 6) {
+    passingArray.pop();
+  }
+}
+
+
 function createCell (property, parent) {
   var td = document.createElement('td');
   td.innerHTML = property;
@@ -156,17 +149,35 @@ function createCell (property, parent) {
 }
 
 
-function gameToTable() {
+function gameCollection() {
   document.getElementById('results-table').innerHTML = '';
   var newRow;
   for (var i = 0; i < gameArray.length; i++) {
     newRow = document.createElement('tr');
     createCell (gameArray[i].name, newRow);
-    createCell (gameArray[i].numPlayers, newRow);
+    createCell (gameArray[i].minPlayers, newRow);
+    createCell (gameArray[i].maxPlayers, newRow);
     createCell (gameArray[i].minTime, newRow);
     createCell (gameArray[i].maxTime, newRow);
     createCell (gameArray[i].looksGood, newRow);
     createCell (gameArray[i].difficulty, newRow);
+    table.appendChild(newRow);
+  }
+}
+
+
+var searchResults = function () {
+  document.getElementById ('results-table').innerHTML = '';
+  var newRow;
+  for (var i = 0; i < passingArray.length; i++){
+    newRow = document.createElement('tr');
+    createCell (passingArray[i].name, newRow);
+    createCell (passingArray[i].minPlayers, newRow);
+    createCell (passingArray[i].maxPlayers, newRow);
+    createCell (passingArray[i].minTime, newRow);
+    createCell (passingArray[i].maxTime, newRow);
+    createCell (passingArray[i].looksGood, newRow);
+    createCell (passingArray[i].difficulty, newRow);
     table.appendChild(newRow);
   }
 }
@@ -179,7 +190,8 @@ var saveGames = function () {
   localStorage.numberOfGames = 0;
   for (var k = 0; k < gameArray.length; k++) {
     localStorage['game ' + k + ' name'] = gameArray[k].name;
-    localStorage['game ' + k + ' number of players'] = gameArray[k].numPlayers;
+    localStorage['game ' + k + ' min number of players'] = gameArray[k].minPlayers;
+    localStorage['game ' + k + ' max number of players'] = gameArray[k].maxPlayers;
     localStorage['game ' + k + ' minimum time'] = gameArray[k].minTime;
     localStorage['game ' + k + ' maximum time'] = gameArray[k].maxTime;
     localStorage['game ' + k + ' looks'] = gameArray[k].looksGood;
@@ -193,7 +205,8 @@ var loadGames = function () {
     gameArray.push( // add to the game array
       new Game ( // a new game, with parameters:
         localStorage['game ' + l + ' name'],
-        localStorage['game ' + l + ' number of players'],
+        localStorage['game ' + l + ' min number of players'],
+        localStorage['game ' + l + ' max number of players'],
         localStorage['game ' + l + ' minimum time'],
         localStorage['game ' + l + ' maximum time'],
         localStorage['game ' + l + ' looks'],
@@ -213,13 +226,6 @@ var loadGames = function () {
 ******************************************************************************/
 
 
-/* DONE ***********************************************************************
-* add event listener for the submission button on the search form. This is    *
-* the form that will be used for both the "Let's Roll" page and the game      *
-* recommendations page.                                                       *
-******************************************************************************/
-
-
 if (button) { // if 'button' exists in HTML...
   button.addEventListener ('click', gameInput); // when the input submission button is clicked, run the gameInput function
 } else { // otherwise
@@ -235,18 +241,19 @@ function gameInput (event) { // create new function gameInput, where:
   event.preventDefault(); // prevent the page from refreshing
   // get information from the form questions:
   var inputName = event.target.form.elements[0].value // Name of the game to be added
-  var inputPlayers = event.target.form.elements[1].value; // Number of players
-  var inputMinTime = event.target.form.elements[2].value; // Min time you can play
-  var inputMaxTime = event.target.form.elements[5].value; // Max time you can play
-  var inputLook = event.target.form.elements[3].value; // Care about the look of the game?
-  var inputDifficulty = event.target.form.elements[4].value; // Difficult level (1 - 5)
+  var inputMinPlayers = event.target.form.elements[1].value; // Number of players
+  var inputMaxPlayers = event.target.form.elements[2].value; // Number of players
+  var inputMinTime = event.target.form.elements[3].value; // Min time you can play
+  var inputMaxTime = event.target.form.elements[4].value; // Max time you can play
+  var inputLook = event.target.form.elements[5].value; // Care about the look of the game?
+  var inputDifficulty = event.target.form.elements[6].value; // Difficult level (1 - 5)
   gameArray.push ( // add to the gameArray
     new Game ( // create a new game
-      inputName, inputPlayers, inputMinTime, inputMaxTime, inputLook, inputDifficulty // with these parameters
+      inputName, inputMinPlayers, inputMaxPlayers, inputMinTime, inputMaxTime, inputLook, inputDifficulty // with these parameters
     ) // end new game object
   ); // end pushing to array
   form.reset(); // make the form ready for additional input
-  gameToTable();
+  gameCollection();
   saveGames();
 } // end function gameInput
 
@@ -265,17 +272,9 @@ function gameSearch (event) { // create new function gameSearch, where:
 
  updatePassingArray(searchNumPlayers, searchTime, searchLooks); // update the objects in the array of "passing" games
  sortByDifficulty(passingArray, searchDifficulty); // sort those games by difficulty
- gameToTable();
+ shortenPassingArray();
+ searchResults();
 } // end function gameSearch
-
-
-/* TODO ***********************************************************************
-* set up an event handler for the search form, from the "Let's Roll" and game *
-* recommendations pages. This event handler will take in the input from the   *
-* form and then run them through the function to output an odered list. The   *
-* "Let's Roll" page will reference the gameArray, whereas the recommendations *
-* page will reference the hard-coded games.                                   *
-******************************************************************************/
 
 
 /* TODO ***********************************************************************
@@ -292,6 +291,5 @@ var randomFirst = function () { // create new function randomFirst, where:
 
 // object arrays
 if (localStorage.numberOfGames !== 0) {
-  console.log('test');
   loadGames();
 }

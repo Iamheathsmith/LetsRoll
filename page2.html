@@ -29,20 +29,32 @@
             <input type="text" name="game_name" required>
           </li>
           <li class="form-li">Number of Players:
-            <select name="num_of_player">
-              <option value="none-players" selected>please select</option>
-              <option value="2">2 players</option>
-              <option value="3">3 players</option>
-              <option value="4">4 players</option>
-              <option value="5">5 players</option>
-              <option value="6">6 players</option>
-              <option value="7">7 players</option>
-              <option value="8">8 players</option>
-            </select>
+            <div>
+              <select name="min-players" required>
+                <option value="none-players" selected>Minimum</option>
+                <option value="2">2 players</option>
+                <option value="3">3 players</option>
+                <option value="4">4 players</option>
+                <option value="5">5 players</option>
+                <option value="6">6 players</option>
+                <option value="7">7 players</option>
+                <option value="8">8 players</option>
+              </select>
+              <select name="max-players" required>
+                <option value="none-players" selected>Maximum</option>
+                <option value="2">2 players</option>
+                <option value="3">3 players</option>
+                <option value="4">4 players</option>
+                <option value="5">5 players</option>
+                <option value="6">6 players</option>
+                <option value="7">7 players</option>
+                <option value="8">8 players</option>
+              </select>
+            </div>
           </li>
-          <li class="form-li">Min time you can play?:
-            <input type="number" name="min_time"  required>
-            <label>Minutes.</label>
+          <li class="form-li">Time it takes to play:
+            <input type="number" name="min_time" placeholder="Min time" required>
+            <input type="number" name="max_time" placeholder="Max time" required>
           </li>
         </ul>
         <ul class="form-right">
@@ -64,10 +76,6 @@
               <option value="5">level 5</option>
             </select>
           </li>
-          <li class="form-li">Max time you can play:
-            <input type="number" name="max_time" required>
-            <label>Minutes.</label>
-          </li>
         </ul>
         <div class="button">
            <button id="btn" type="click">Add Game</button>
@@ -80,7 +88,8 @@
           <thead>
             <tr>
               <th>Name</th>
-              <th>Number of Players</th>
+              <th>Minimum Players</th>
+              <th>Maximum Players</th>
               <th>Min time</th>
               <th>Max time</th>
               <th>Looks nice</th>
