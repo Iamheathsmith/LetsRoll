@@ -63,7 +63,7 @@ a {
   margin-left: 25px;
 }
 
-.header-right img.spin {
+.header-right img:active {
   transition: 2s;
   transform: rotate(1080deg);
 }
