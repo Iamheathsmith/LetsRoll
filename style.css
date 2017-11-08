@@ -4,7 +4,6 @@ main {
   width: 960px;
   margin: auto;
   align-content: center;
-  border: 1px solid red;
 }
 
  body {
@@ -27,21 +26,6 @@ main {
    border-bottom-left-radius: 3px;
    border-bottom-right-radius: 3px;
  }
-
-a:link
-{
-    color: white;
-}
-
-a:visited
-{
-    color: brown;
-}
-
-a:hover
-{
-    color: red;
-}
 
 
 
@@ -76,18 +60,34 @@ a:hover
   text-align: center;
   background-color: #FF342A;
   display: inline-block;
-  font-style: helvetica;
   color: black;
+  font-family: "Permanent marker";
   font-size: 24px;
   margin-right: 20px;
   border-radius: 3px;
   padding: 3px;
 }
 
+h2:link
+{
+  color: black;
+}
+h2:visited
+{
+    color: green;
+}
+
+h2:hover
+{
+    color: white;
+}
+
 h3 {
   color: red;
-  font-family: helvetica;
+  font-family: "Permanent marker";
 }
+
+
  /* the meeple image */
 
 .header-right {
@@ -95,7 +95,7 @@ h3 {
   bottom: 80px;
   float: right;
   margin-right: 30px;
-  width: 120px;
+  width: 130px;
 }
 
 .header-right img {
@@ -125,6 +125,15 @@ h3 {
 
 /* input form for items to be entered in*/
 
+h6 {
+  font-family: "acme";
+}
+
+label {
+  font-family: "acme";
+  font-size: 22px;
+}
+
 #input-form {
  background-color: #F6FAFA;
  border: 1px solid black;
@@ -132,7 +141,7 @@ h3 {
  height: 240px;
  border-radius: 3px;
  margin: 0 auto;
- margin-top: 50px;
+ margin-top: 150px;
 }
 
 .form-left {
@@ -170,10 +179,19 @@ h4 {
   font-size: 24px;
   padding-top: 30px;
   text-align: center;
+  font-family: "Permanent marker";
+}
+
+th {
+  font-family: "Permanent marker";
+}
+
+td {
+  font-family: "Permanent marker";
 }
 
 .results {
-  margin-top: 30px;
+  margin-top: 120px;
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 100px;
@@ -228,4 +246,22 @@ footer {
 h5 {
   padding: 40px;
   font-size: 20px;
+  font-family: "acme";
+  color: white;
+  text-decoration: underline;
+}
+
+h5:link
+{
+  color: white;
+}
+
+h5:visited
+{
+  color: green;
+}
+
+h5:hover
+{
+  color: red;
 }
