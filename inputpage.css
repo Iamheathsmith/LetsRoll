@@ -2,25 +2,48 @@
 
 main {
   width: 960px;
-  float: left;
+  margin: auto;
+  align-content: center;
+  border: 1px solid red;
 }
 
  body {
    background-color: #FDFFFD;
-   margin: 0 auto;
-   width: 960px;
+   width: 100%;
+   align-content: center;
  }
 
- header {
+/* The header CSS items */
+.header-box {
+  width: 960px;
+  margin-left: calc(50% - 480px);
+}
+
+ .header {
    background-image: url("img/Monopoly-Board copy.jpg");
+   width: 100%;
+   background-size: cover;
    padding-bottom: 10px;
    border-bottom-left-radius: 3px;
    border-bottom-right-radius: 3px;
  }
 
-a {
-  color: black;
+a:link
+{
+    color: white;
 }
+
+a:visited
+{
+    color: brown;
+}
+
+a:hover
+{
+    color: red;
+}
+
+/* logo part of header */
 
 .header-left img {
   width: 100px;
@@ -36,6 +59,8 @@ a {
   margin-top: 5px;
   transition: .2s;
 }
+
+/* the tab section in header */
 
 .header-middle {
   text-align: center;
@@ -54,7 +79,8 @@ a {
   border-radius: 3px;
   padding: 3px;
 }
-
+ /* the meeple part of header */
+ 
 .header-right {
   position: relative;
   bottom: 80px;
@@ -87,6 +113,8 @@ h3 {
   color: red;
   font-family: helvetica;
 }
+
+/* the input section */
 
 #input-form {
  background-color: #F6FAFA;
@@ -139,6 +167,7 @@ h3 {
   text-align: center;
 }
 
+ /* the results talbe */
 .results {
   margin-top: 30px;
   margin-right: auto;
@@ -152,6 +181,18 @@ h3 {
   border: 1px solid black;
 }
 
+thead tr th {
+ border: 1px solid red;
+ padding: 15px;
+ text-align: left;
+}
+
+tbody tr td {
+ border: 1px solid red;
+ padding: 15px;
+ text-align: left;
+}
+
 h4 {
   text-align: center;
   margin-top: 40px;
@@ -159,10 +200,18 @@ h4 {
   padding-top: 10px;
 }
 
-.footer {
-  width: 960px;
+/* footer stuff here */
+
+footer {
+  background-image: url("img/Monopoly-Board copy.jpg");
+  width: 100%;
+  background-size: cover;
   height: 100px;
-  background-color: grey;
+}
+
+.footer-box {
+  width: 960px;
+  margin-left: calc(50% - 480px);
 }
 
 .footer-left {
@@ -182,16 +231,4 @@ h4 {
 h5 {
   padding: 40px;
   font-size: 20px;
-}
-
-thead tr th {
- border: 1px solid red;
- padding: 15px;
- text-align: left;
-}
-
-tbody tr td {
- border: 1px solid red;
- padding: 15px;
- text-align: left;
 }
