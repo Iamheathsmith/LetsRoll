@@ -321,12 +321,10 @@ function startGame() {
   var randomFirst = goFirst[Math.floor(Math.random() * goFirst.length)];
   alert (randomFirst);
 };
-
-} // end randomFirst function
+// end randomFirst function
 
 
 // object arrays
 if (localStorage.numberOfGames !== 0) {
   loadGames();
 }
-
