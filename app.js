@@ -329,3 +329,28 @@ function startGame() {
 if (localStorage.numberOfGames !== 0) {
   loadGames();
 }
+
+/***** Clear local storage button *****/
+
+function clearStorage() {
+  localStorage.clear();
+  location.reload();
+}
+
+/***** remove Individual game button *****/
+
+var gameName = document.getElementById('removeButton');
+gameName.addEventListener ('click', removeGame);
+
+function removeGame(event) {
+  console.log('EVENT', event)
+  event.preventDefault();
+  var inputName = event.target.form.elements[7].value;
+  console.log(inputName);
+  for (var i = 0; i < gameArray.length; i++) {
+    if(gameArray[i].name === inputName) {
+      gameArray.splice(i,1);
+    }
+  }
+  gameCollection();
+}
