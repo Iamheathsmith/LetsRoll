@@ -12,7 +12,7 @@ main {
  }
 
  header {
-   background-image: url("img/header.jpg");
+   background-image: url("img/Monopoly-Board copy.jpg");
    padding-bottom: 10px;
    border-bottom-left-radius: 5px;
    border-bottom-right-radius: 5px;
@@ -53,22 +53,31 @@ a {
   bottom: 80px;
   float: right;
   margin-right: 30px;
-  width: 100px;
+  width: 120px;
 }
 
 .header-right img {
-  margin-top: 10px;
-  width: 50px;
-  height: 50px;
+  margin-top: 5px;
+  width: 60px;
+  height: 60px;
   margin-left: 25px;
 }
 
+.header-right img:active {
+  transition: 2s;
+  transform: rotate(1080deg);
+}
+
+h3 {
+  color: red;
+  font-family: helvetica;
+}
 
 #input-form {
  background-color: #F6FAFA;
  border: 1px solid black;
  width: 800px;
- height: 320px;
+ height: 340px;
  border-radius: 30px;
  margin: 0 auto;
  margin-top: 50px;

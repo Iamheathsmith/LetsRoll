@@ -64,7 +64,8 @@ var goFirst = [ // create new array of different ways to go first, containing:
 
 function Game (name, numPlayers, minTime, maxTime, lookOfGame, difficulty) { // construtor for Game objects
   this.name = name; // the title of the game
-  this.numPlayers = numPlayers; // the number of players supported by the game
+  this.minPlayers = numPlayers; // the min of players supported by the game
+  this.maxPlayers = numPlayers; // the max of players supported by the game
   this.minTime = minTime; // the minimum amount of time it can take to play
   this.maxTime = maxTime; // the maximum amount of time it can take to play
   this.looksGood = lookOfGame; // does the game have a good theme / art? (y/n)
@@ -83,7 +84,7 @@ Game.prototype.playersMatch = function (formPlayers) { // create new method play
     } // end if
   } // end for
   return false; // if no hours match, return false
-} // end playersMatch method
+}; // end playersMatch method
 
 
 // method: check if the input time to play matches the time range supported by the a game
@@ -93,7 +94,7 @@ Game.prototype.timesMatch = function (formTime) { // create new method timesMatc
   } else { // otherwise...
     return false; // return false
   } // end if else
-} // end timesMatch method
+}; // end timesMatch method
 
 
 // method: check if the user preference on art matches the aesthetics of the game
@@ -103,7 +104,7 @@ Game.prototype.looksMatch = function (formLooks) { // create new method artMatch
   } else { // otherwise...
     return false; // return false
   } // end if else
-} // end artMatch method
+}; // end artMatch method
 
 
 /***** HELPER FUNCTIONS *****/
@@ -116,7 +117,7 @@ var addIfPassing = function (gameObject, formPlayers, formTime, formLooks) { // 
     && gameObject.prototype.looksMatch (formLooks)) { // and the game fits the user's art preferences...
     passingArray.push (gameObject); // add that game to the array passingArray
   } // end if
-} // end function addIfPassing
+}; // end function addIfPassing
 
 
 // function: generate the array of passing games
@@ -125,7 +126,7 @@ var updatePassingArray = function (formPlayers, formTime, formLooks){ // create 
   for (var gameIndex = 0; gameIndex < gameArray.length; gameIndex++){ // for every game...
     addIfPassing(gameArray[gameIndex], formPlayers, formTime, formLooks); // add object to the passing array if it passes
   } // end for
-} // end function updatePassingArray
+}; // end function updatePassingArray
 
 
 // function: return a positive number regardless of the sign of the input number
@@ -135,24 +136,24 @@ var flipSign = function (integer) { // create new function flipSign, where:
   } else { // if the integer is already positive
     return integer; // return it as-is
   } // end if else
-} // end function flipSign
+}; // end function flipSign
 
 
 // function: sorts the array of passing games by difficulty, with the top being the closest difficulty to the desired difficulty
 var sortByDifficulty = function (passingArray, formDifficulty) { // create new function sortByDifficulty, where:
-    var swapped; // declare variable to keep track of if swaps were made (starts as false)
-    do { // run this code...
-        swapped = false; // set swapped to false
-        for (var i = 0; i < passingArray.length - 1; i++) { // for every game that passed the test
-            if (flipSign(passingArray[i].difficulty - formDifficulty) > flipSign(passingArray[i + 1].difficulty - formDifficulty)) { // if the current index is farther away from the input difficulty than the next index...
-                var temp = passingArray[i]; // place the value of the current index in a temporary location
-                passingArray[i] = passingArray[i + 1]; // replace the current index spot with the next index
-                passingArray[i + 1] = temp; // replace the next index spot with the value from the temporary location
-                swapped = true; // indicate that a swap was made
-            } // end if
-        } // end for loop
-    } while (swapped); // ...as long as swapped remains true by the end of the loop
-} // end function sortByDifficulty
+  var swapped; // declare variable to keep track of if swaps were made (starts as false)
+  do { // run this code...
+    swapped = false; // set swapped to false
+    for (var i = 0; i < passingArray.length - 1; i++) { // for every game that passed the test
+      if (flipSign(passingArray[i].difficulty - formDifficulty) > flipSign(passingArray[i + 1].difficulty - formDifficulty)) { // if the current index is farther away from the input difficulty than the next index...
+        var temp = passingArray[i]; // place the value of the current index in a temporary location
+        passingArray[i] = passingArray[i + 1]; // replace the current index spot with the next index
+        passingArray[i + 1] = temp; // replace the next index spot with the value from the temporary location
+        swapped = true; // indicate that a swap was made
+      } // end if
+    } // end for loop
+  } while (swapped); // ...as long as swapped remains true by the end of the loop
+}; // end function sortByDifficulty
 
 
 function createCell (property, parent) {
@@ -167,10 +168,12 @@ function gameToTable() {
   document.getElementById('results-table').innerHTML = '';
   var newRow;
   for (var i = 0; i < gameArray.length; i++) {
+    console.log(event);
     newRow = document.createElement('tr');
     console.log('this is the table', table);
     createCell (gameArray[i].name, newRow);
-    createCell (gameArray[i].numPlayers, newRow);
+    createCell (gameArray[i].minPlayers, newRow);
+    createCell (gameArray[i].maxPlayers, newRow);
     createCell (gameArray[i].minTime, newRow);
     createCell (gameArray[i].maxTime, newRow);
     createCell (gameArray[i].looksGood, newRow);
@@ -209,15 +212,16 @@ if (button) {
 function gameInput (event) { // create new function gameInput, where:
   event.preventDefault(); // prevent the page from refreshing
   // get information from the form questions:
-  var inputName = event.target.form.elements[0].value // Name of the game to be added
-  var inputPlayers = event.target.form.elements[1].value; // Number of players
-  var inputMinTime = event.target.form.elements[2].value; // Min time you can play
-  var inputMaxTime = event.target.form.elements[5].value; // Max time you can play
-  var inputLook = event.target.form.elements[3].value; // Care about the look of the game?
-  var inputDifficulty = event.target.form.elements[4].value; // Difficult level (1 - 5)
+  var inputName = event.target.form.elements[0].value; // Name of the game to be added
+  var minPlayers = event.target.form.elements[1].value;
+  var maxPlayers = event.target.form.elements[2].value; // Number of players
+  var inputMinTime = event.target.form.elements[3].value; // Min time you can play
+  var inputMaxTime = event.target.form.elements[6].value; // Max time you can play
+  var inputLook = event.target.form.elements[4].value; // Care about the look of the game?
+  var inputDifficulty = event.target.form.elements[5].value; // Difficult level (1 - 5)
   gameArray.push ( // add to the gameArray
     new Game ( // create a new game
-      inputName, inputPlayers, inputMinTime, inputMaxTime, inputLook, inputDifficulty // with these parameters
+      inputName, minPlayers, maxPlayers, inputMinTime, inputMaxTime, inputLook, inputDifficulty // with these parameters
     ) // end new game object
   ); // end pushing to array
   form.reset(); // make the form ready for additional input
@@ -228,16 +232,16 @@ function gameInput (event) { // create new function gameInput, where:
 
 // function: on search form submission, sort and order the array of games, then output them in a table
 function gameSearch (event) { // create new function gameSearch, where:
- event.preventDefault(); // prevent the page from refreshing
- // get information from the form questions:
- var searchNumPlayers = event.target.form.elements[0].value; // Number of players
- var searchTime = event.target.form.elements[1].value; // Max time you can play
- var searchDifficulty = event.target.form.elements[2].value; // Difficult level (1 - 5)
- var searchLooks = event.target.form.elements[3].value; // Care about the look of the game?
- // form.reset();
- updatePassingArray(searchNumPlayers, searchTime, searchLooks); // update the objects in the array of "passing" games
- sortByDifficulty(passingArray, searchDifficulty); // sort those games by difficulty
- gameToTable();
+  event.preventDefault(); // prevent the page from refreshing
+  // get information from the form questions:
+  var searchNumPlayers = event.target.form.elements[0].value; // Number of players
+  var searchTime = event.target.form.elements[1].value; // Max time you can play
+  var searchDifficulty = event.target.form.elements[2].value; // Difficult level (1 - 5)
+  var searchLooks = event.target.form.elements[3].value; // Care about the look of the game?
+  // form.reset();
+  updatePassingArray(searchNumPlayers, searchTime, searchLooks); // update the objects in the array of "passing" games
+  sortByDifficulty(passingArray, searchDifficulty); // sort those games by difficulty
+  gameToTable();
 } // end function gameSearch
 
 
@@ -259,5 +263,21 @@ function gameSearch (event) { // create new function gameSearch, where:
 // function: pick a random way to decide who goes first
 var randomFirst = function () { // create new function randomFirst, where:
   return goFirst[Math.floor (Math.random() * goFirst.length)]; // output a random item from the goFirst array
-} // end randomFirst function
+}; // end randomFirst function
 
+/***** start button *****/
+
+function spinner() {
+  var toggle = document.getElementById('goFirstBtn');
+  toggle.addEventListener('click', function() {
+    this.setAttribute('class', 'spin');
+  });
+}
+
+spinner();
+
+function startGame() {
+  var goFirst = ['Who just had a Birtday?', 'Who is the youngest?', 'Who is the oldest', 'who has the largest shoe size', 'who is the tallest', 'last one to do "noes goes"'];
+  var randomFirst = goFirst[Math.floor(Math.random() * goFirst.length)];
+  alert (randomFirst);
+};

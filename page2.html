@@ -19,7 +19,7 @@
         </section>
         <section class="header-right">
           <h3>Who goes first!</h3>
-          <img id="goes_first" onclick="startGame()" src="img/clickhere.png">
+           <img id="goFirstBtn" onclick="startGame()" onclick="spinner()" src="img/CharSticker8a.png">
         </section>
     </header>
 
@@ -30,20 +30,32 @@
             <input type="text" name="game_name" required>
           </li>
           <li class="form-li">Number of Players:
-            <select name="num_of_player">
-              <option value="none-players" selected>please select</option>
-              <option value="num-two">2 players</option>
-              <option value="num-three">3 players</option>
-              <option value="num-four">4 players</option>
-              <option value="num-five">5 players</option>
-              <option value="num-six">6 players</option>
-              <option value="num-seven">7 players</option>
-              <option value="num-eight">8 players</option>
-            </select>
+            <div>
+              <select name="min_of_player">
+                <option value="none-players" selected>Min Players</option>
+                <option value="num-two">2 players</option>
+                <option value="num-three">3 players</option>
+                <option value="num-four">4 players</option>
+                <option value="num-five">5 players</option>
+                <option value="num-six">6 players</option>
+                <option value="num-seven">7 players</option>
+                <option value="num-eight">8 players</option>
+              </select>
+              <select name="mix_of_player">
+                <option value="none-players" selected>Max Players</option>
+                <option value="num-two">2 players</option>
+                <option value="num-three">3 players</option>
+                <option value="num-four">4 players</option>
+                <option value="num-five">5 players</option>
+                <option value="num-six">6 players</option>
+                <option value="num-seven">7 players</option>
+                <option value="num-eight">8 players</option>
+              </select>
+            </div>
           </li>
-          <li class="form-li">Min time you can play?:
-            <input type="number" name="min_time"  required>
-            <label>Minutes.</label>
+          <li class="form-li">Time it takes to play:
+            <input type="number" name="min_time" placeholder="Min time" required>
+            <input type="number" name="max_time" placeholder="Max time" required>
           </li>
         </ul>
         <ul class="form-right">
@@ -64,10 +76,6 @@
               <option value="dif-five">level 5</option>
             </select>
           </li>
-          <li class="form-li">Max time you can play:
-            <input type="number" name="max_time" required>
-            <label>Minutes.</label>
-          </li>
         </ul>
         <div class="button">
            <button id="btn" type="click">Add Game</button>
@@ -81,7 +89,8 @@
           <thead>
             <tr>
               <th>Name</th>
-              <th>Number of Players</th>
+              <th>Min number of Players</th>
+              <th>Max Number of Players</th>
               <th>Min time</th>
               <th>Max time</th>
               <th>Looks nice</th>
