@@ -1,16 +1,22 @@
 <!DOCTYPE html>
+
 <html>
   <head>
     <meta charset="utf-8">
     <title>Lets Roll!!!!!</title>
+    <link href="https://fonts.googleapis.com/css?family=Acme|Lobster|Permanent+Marker" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
   </head>
 
   <body>
-    <header>
+    <header class="header">
+      <div class="header-box">
         <section class="header-left">
-          <img src="img/dice3.png">
+          <a href="index.html">
+            <img src="img/dice3.png">
+          </a>
         </section>
         <section class="header-middle">
           <a href="index.html"><h2>Main page</h2></a>
@@ -19,14 +25,15 @@
         </section>
         <section class="header-right">
           <h3>Who goes first!</h3>
-           <img id="goFirstBtn" onclick="startGame()" onclick="spinner()" src="img/CharSticker8a.png">
+            <img id="goFirstBtn" onclick="startGame()" onclick="spinner()" src="img/CharSticker8a.png">
         </section>
+      </div>
     </header>
 
     <main>
       <form id="input-form">
         <ul class="form-left">
-          <li class="form-li">Number of Players:
+          <li class="form-li"><h6>Number of Players:</h6>
               <select name="num-of-players" required>
                 <option value="none-players" selected>Number of Players</option>
                 <option value="2">2 players</option>
@@ -38,13 +45,13 @@
                 <option value="8">8 players</option>
               </select>
           </li>
-          <li class="form-li">How long can you Play?:
+          <li class="form-li"><h6>How long can you Play?:</h6>
               <input type="number" id="time-of-play" name="timePlay" required>
               <label>Minutes.</label>
           </li>
         </ul>
         <ul class="form-right">
-          <li class="form-li">Difficulty Level:
+          <li class="form-li"><h6>Difficulty Level:</h6>
             <select name="difficulty-lvl" required>
               <option value="" selected>please select</option>
               <option value="1">level 1</option>
@@ -55,7 +62,7 @@
             </select>
           </li>
 
-            <li class="form-li">Care about the look of game?
+            <li class="form-li"><h6>Care about the look of game?</h6>
             <select name="look_Of-Game">
               <option value="" selected>please select</option>
               <option value="Yes">YES, it does Matter</option>
@@ -64,13 +71,13 @@
           </li>
         </ul>
         <div class="button">
-           <button id="btn_main" type="click">LETS ROLL!</button>
+           <button id="btn_lib" type="click">LETS ROLL!</button>
         </div>
       </form>
 
       <table class="results">
         <h4>** What We Recommended **</h4>
-          <thead>
+          <!-- <thead>
             <tr>
               <th>Name</th>
               <th>Min Players</th>
@@ -80,24 +87,30 @@
               <th>Looks nice</th>
               <th>Difficulty level</th>
             </tr>
-          </thead>
+          </thead> -->
         <tbody id="results-table">
           <!--table content dynamically generrated in JS-->
         </tbody>
       </table>
-
-      <footer>
-        <section class="footer">
-          <div class="footer-left">
-            <h5><a href="blank">Where to buy games</h5>
-          </div>
-          <div class="footer-right">
-            <h5><a href="blank">About Us<h5>
-          </div>
-        </section>
-      </footer>
-
     </main>
+
+    <ul class="icons">
+      <li><a href="#" class="fa fa-facebook"></a></li>
+      <li><a href="#" class="fa fa-twitter"></a></li>
+      <li><a href="#" class="fa fa-linkedin"></a></li>
+    </ul>
+
+    <footer>
+      <section class="footer-box">
+        <div class="footer-left">
+          <a href="https://www.google.com/maps/search/board+games+store/@47.6160058,-122.3696833,13z/data=!3m1!4b1"><h5>Where to buy games</h5></a>
+        </div>
+        <div class="footer-right">
+          <a href="blank"><h5>About Us</h5></a>
+        </div>
+      </section>
+    </footer>
+
     <script src="app.js"></script>
   </body>
 </html>
