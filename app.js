@@ -10,28 +10,14 @@
 
 // function for meeple spinner
 
-function spinner() {
-  var toggle = document.getElementById('goFirstBtn');
-  toggle.addEventListener('click', function() {
-    this.setAttribute('class', 'spin');
-  });
-}
-
-spinner();
 
 function startGame(){
-  var goFirst = ['Who just had a Birtday?', 'Who is the youngest?', 'Who is the oldest', 'who has the largest shoe size', 'who is the tallest', 'last one to do "noes goes"', 'last person to clean there toilet', 'who must recently finished a noval', 'short man goes first', 'last person to go for a run'];
   var randomFirst = goFirst[Math.floor(Math.random() * goFirst.length)];
   alert (randomFirst);
-};
-
-// end of function for meeple spinner
-
+} // end of function for meeple spinner
 
 
 /***** VARIABLE DECLARATIONS *****/
-
-
 
 
 // DOM calls
@@ -39,33 +25,20 @@ var form = document.getElementById ('input-form'); // DOM location of the form t
 var mainButton = document.getElementById('btn_main'); // DOM location of the search form
 var button = document.getElementById ('btn'); // DOM location of the button for that form
 var table = document.getElementById('results-table');
+var gameName = document.getElementById('removeButton');
 
 
-
-/* TODO ***********************************************************************
-* add DOM calls for the search form class. This will be used for both the     *
-* "Let's Roll" page and the game recommendations page. The parameters used by *
-* this form will be the ones referenced by the testing and sorting methods    *
-******************************************************************************/
-
-
-
-var gameArray = [];
+var gameArray = []; // array to hold all of the objects input by the user
 var passingArray = []; // array to hold the objects that pass the filtering tests
 
 
-
-
 // "who goes first?" information
-var goFirst = [ // create new array of different ways to go first, containing:
-  'Who just had a Birthday?',
-  'Who is the youngest?',
-  'Who is the oldest'
-]; // end of goFirst array
+var goFirst = [
+  'Who just had a Birtday?', 'Who is the youngest?', 'Who is the oldest', 'who has the largest shoe size', 'who is the tallest', 'last one to do "nose goes"', 'last person to clean there toilet', 'who must recently finished a novel', 'shortest person goes first', 'last person to go for a run'
+];
 
 
 /***** OBJECT CONSTRUCTOR *****/
-
 
 
 function Game (name, minPlayers, maxPlayers, minTime, maxTime, lookOfGame, difficulty) { // construtor for Game objects
@@ -81,120 +54,6 @@ function Game (name, minPlayers, maxPlayers, minTime, maxTime, lookOfGame, diffi
 
 /***** PROTOTYPE METHODS *****/
 
-//
-// // function Game(name, numPlayers, playTime, skillLevel, isCompetitive, isThematic, pictureLink, description) {
-// //  this.name = name,
-// //  this.numPlayers = numPlayers,
-// //  this.playTime = playTime,
-// //  this.skillLevel = skillLevel,
-// //  this.isCompetitive = isCompetitive,
-// //  this.isThematic = isThematic,
-// //  this.pictureLink = pictureLink,
-// //  this.description = description;
-// // }
-//
-//
-// /***** VARIABLE DECLARATIONS *****/
-//
-//
-// var passingArray = []; // array to hold the objects that pass the filtering tests
-//
-//
-// /***** PROTOTYPE METHODS *****/
-//
-//
-// Game.prototype.playersMatch = function (formPlayers) {
-//   for (var i = 0; i < this.numPlayers.length; i++) { // for every possible number of players...
-//     if (formPlayers === this.numPlayers[i]) { // if that number is equal to the desired number...
-//       return true; // return true
-//     } // end if
-//   } // end for
-//   return false; // if no hours match, return false
-// }; // end playersMatch method
-//
-//
-// Game.prototype.timesMatch = function (formTime) {
-//   if (this.minTime <= formTime && formTime <= this.maxTime) { // if the game time is equal to the desired time...
-//     return true; // return true
-//   } else { // otherwise...
-//     return false; // return false
-//   } // end if else
-// }; // end timesMatch method
-//
-//
-// Game.prototype.coopMatch = function (formCompetitive) {
-//   if (formCompetitive = this.isCompetitive) { // if the game is the desired type...
-//     return true; // return true
-//   } else { // otherwise...
-//     return false; // return false
-//   } // end if else
-// }; // end coopMatch method
-//
-//
-// // method: match the form input to the stored value
-// Game.prototype.artMatch = function (formLooks) {
-//   if (formLooks = this.looksGood) { // if the game is the desired type...
-//     return true; // return true
-//   } else { // otherwise...
-//     return false; // return false
-//   } // end if else
-// }; // end artMatch method
-//
-//
-// /***** HELPER FUNCTIONS *****/
-//
-//
-// // function: add an object to the passing array if it passes every test
-// var addIfPassing = function (gameObject, formPlayers, formTime, formCompetitive, formLooks) {
-//   if (gameObject.prototype.playersMatch(formPlayers)
-//     && gameObject.prototype.timesMatch(formTime)
-//     && gameObject.prototype.coopMatch(formCompetitive)
-//     && gameObject.prototype.artMatch(formLooks)) { // if the game passes all of the tests...
-//     passingArray.push(gameObject); // add that game to the array
-//   } // end if
-// }; // end function addIfPassing
-//
-//
-// // function: generate the array of passing games
-// var updatePassingArray = function (formPlayers, formTime, formCompetitive, formLooks){
-//   passingArray = []; // reset the passing array
-//   for (var gameIndex = 0; gameIndex < gameArray.length; gameIndex++){ // for every game...
-//     addIfPassing(gameArray[gameIndex], formPlayers, formTime, formCompetitive, formLooks); // add object to the passing array if it passes
-//   } // end for
-// }; // end function updatePassingArray
-//
-//
-// // function: return a positive number regardless of the sign of the input number
-// var flipSign = function (integer) {
-//   if (integer < 0) { // if the integer is negative
-//     return integer * -1; // make it positive
-//   } else { // if the integer is already positive
-//     return integer; // return it as-is
-//   } // end if else
-// }; // end function flipSign
-//
-//
-// // function: sorts the array of passing games by difficulty, with the top being the closest difficulty to the desired difficulty
-// var sortByDifficulty = function (passingArray, formDifficulty) {
-//   var swapped; // declare variable to keep track of if swaps were made (starts as false)
-//   do { // run this code:
-//     swapped = false; // set swapped to false
-//     for (var i = 0; i < passingArray.length - 1; i++) { // for every game that passed the test
-//       if (flipSign(passingArray[i] - formDifficulty) > flipSign(passingArray[i + 1] - formDifficulty)) { // if the current index is farther away from the input difficulty than the next index...
-//         var temp = passingArray[i]; // place the value of the current index in a temporary location
-//         passingArray[i] = passingArray[i + 1]; // replace the current index spot with the next index
-//         passingArray[i + 1] = temp; // replace the next index spot with the value from the temporary location
-//         swapped = true; // indicate that a swap was made
-//       } // end if
-//     } // end for loop
-//   } while (swapped); // ...as long as swapped remains true by the end of the loop
-// }; // end function sortByDifficulty
-//
-//
-// // ********************** Who goes first button ***********************
-
-
-//goesFirst.addEventListener('click', startGame);
 
 // method: check if the input amount of players matches the number of players supported by a game
 Game.prototype.playersMatch = function (formPlayers) { // create new method playersMatch, where:
@@ -327,6 +186,14 @@ var searchResults = function () {
 };
 
 
+function spinner() {
+  var toggle = document.getElementById('goFirstBtn');
+  toggle.addEventListener('click', function() {
+    this.setAttribute('class', 'spin');
+  });
+}
+
+
 /***** LOCAL STORAGE ****/
 
 
@@ -375,6 +242,8 @@ if (button) { // if 'button' exists in HTML...
 } else { // otherwise
   mainButton.addEventListener('click', gameSearch); // when the search button is clicked, run the gameSearch function
 } // end if
+
+gameName.addEventListener ('click', removeGame);
 
 
 /***** EVENT HANDLERS *****/
@@ -426,6 +295,25 @@ function gameSearch (event) { // create new function gameSearch, where:
 } // end function gameSearch
 
 
+
+function removeGame (event) {
+
+  event.preventDefault();
+
+  var inputName = event.target.form.elements[7].value;
+
+  for (var i = 0; i < gameArray.length; i++) {
+    if(gameArray[i].name === inputName) {
+      gameArray.splice(i,1);
+    }
+  }
+
+  gameCollection();
+  saveGames();
+}
+
+
+
 /* TODO ***********************************************************************
 * hook up randomFirst to a click event on the "who goes first?" button. This  *
 * will be the button on the top right of every page.                          *
@@ -437,6 +325,7 @@ var randomFirst = function () { // create new function randomFirst, where:
   return goFirst[Math.floor (Math.random() * goFirst.length)]; // output a random item from the goFirst array
 
 }; // end randomFirst function
+
 
 /***** start button *****/
 
@@ -465,25 +354,6 @@ if (localStorage.numberOfGames !== 0) {
 /***** Clear local storage button *****/
 
 function clearStorage() {
-  localStorage.clear();
-  location.reload();
-}
-
-/***** remove Individual game button *****/
-
-var gameName = document.getElementById('removeButton');
-gameName.addEventListener ('click', removeGame);
-
-function removeGame(event) {
-  console.log('EVENT', event)
-  event.preventDefault();
-  var inputName = event.target.form.elements[7].value;
-  console.log(inputName);
-  for (var i = 0; i < gameArray.length; i++) {
-    if(gameArray[i].name === inputName) {
-      gameArray.splice(i,1);
-    }
-  }
-  gameCollection();
-  saveGames();
+  localStorage.clear(); // clear the data in local storage
+  location.reload(); // reload the page
 }
