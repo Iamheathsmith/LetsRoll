@@ -69,11 +69,8 @@ var goFirst = [ // create new array of different ways to go first, containing:
 
 
 
-<<<<<<< HEAD
-function Game (name, minPlayers, maxPlayers, minTime, maxTime, lookOfGame, difficulty, pictureLink, description, webLink) { // construtor for Game objects
-=======
+
 function Game (name, minPlayers, maxPlayers, minTime, maxTime, lookOfGame, difficulty, pictureLink, description, bggLink) { // construtor for Game objects
->>>>>>> 3b83dcad04157edbd991c5007da6b2fac075b4df
   this.name = name; // the title of the game
   this.minPlayers = minPlayers; // the number of players supported by the game
   this.maxPlayers = maxPlayers; // the number of players supported by the game
@@ -186,31 +183,17 @@ function createCell (property, parent) {
 }
 
 
-function libraryResults() {
+function outputGames() {
   document.getElementById('results-table').innerHTML = '';
   var newRow;
   for (var i = 0; i < gameArray.length; i++) {
     console.log(event);
     newRow = document.createElement('tr');
-<<<<<<< HEAD
-    // createCell (ourGameArray[i].pictureLink, newRow);
-    createCell (ourGameArray[i].name, newRow);
-    createCell (ourGameArray[i].minPlayers + " to " + ourGameArray[i].maxPlayers + " players", newRow);
-    // createCell (ourGameArray[i].maxPlayers, newRow);
-    createCell (ourGameArray[i].minTime + " to " + ourGameArray[i].maxTime + " minutes", newRow);
-    // createCell (ourGameArray[i].maxTime, newRow);
-    createCell (ourGameArray[i].looksGood, newRow);
-    createCell ("difficulty :" + ourGameArray[i].difficulty, newRow);
-=======
-    createCell (gameArray[i].pictureLink, newRow);
     createCell (gameArray[i].name, newRow);
-    createCell (gameArray[i].minPlayers, newRow);
-    createCell (gameArray[i].maxPlayers, newRow);
-    createCell (gameArray[i].minTime, newRow);
-    createCell (gameArray[i].maxTime, newRow);
-    createCell (gameArray[i].looksGood, newRow);
-    createCell (gameArray[i].difficulty, newRow);
->>>>>>> 3b83dcad04157edbd991c5007da6b2fac075b4df
+    createCell (gameArray[i].minPlayers + " to " + gameArray[i].maxPlayers + " players", newRow);
+    createCell (gameArray[i].minTime + " to " + gameArray[i].maxTime + " minutes", newRow);
+    createCell ("looks good? " + gameArray[i].looksGood, newRow);
+    createCell ("difficulty :" + gameArray[i].difficulty, newRow);
     table.appendChild(newRow);
   }
 }
@@ -245,15 +228,8 @@ var saveGames = function () {
     localStorage['game ' + k + ' minimum time'] = gameArray[k].minTime;
     localStorage['game ' + k + ' maximum time'] = gameArray[k].maxTime;
     localStorage['game ' + k + ' looks'] = gameArray[k].looksGood;
-<<<<<<< HEAD
     localStorage['game ' + k + ' difficulty'] = gameArray[k].difficulty;
     localStorage.numberOfGames++;}
-=======
-    localStorage['game ' + k + ' picture link'] = gameArray[k].pictureLink;
-    localStorage['game ' + k + ' BGG link'] = gameArray[k].bggLink;
-    localStorage.numberOfGames++;
-  }
->>>>>>> 3b83dcad04157edbd991c5007da6b2fac075b4df
 };
 
 var loadGames = function () {
@@ -314,8 +290,8 @@ function gameInput (event) { // create new function gameInput, where:
 
     ) // end new game object
   ); // end pushing to array
-  form.reset(); // make the form ready for additional input
-  gameCollection();
+  // form.reset(); // make the form ready for additional input
+  outputGames();
   saveGames();
 } // end function gameInput
 
@@ -427,13 +403,11 @@ if (localStorage.numberOfGames !== 0) {
   loadGames();
 }
 
-<<<<<<< HEAD
+
 
 /***** GAME LIBRARY *****/
 
 
-=======
->>>>>>> 3b83dcad04157edbd991c5007da6b2fac075b4df
 var ourGameArray = [
 
   new Game('Caylus', 2, 5, 60, 150, 'false', 4, 'https://cf.geekdo-images.com/xAtnSiJMCFYKpOy9mujcchgZ4jo=/fit-in/246x300/pic1638795.jpg', '1289. To strengthen the borders of the Kingdom of France, King Philip the Fair decided to have a new castle built. For the time being, Caylus is but a humble village, but soon, workers and craftsmen will be flocking by the cartload, attracted by the great prospects. Around the building site, a city is slowly rising up.', 'https://boardgamegeek.com/boardgame/18602/caylus'),
@@ -495,9 +469,6 @@ var ourGameArray = [
 
   new Game('King of Tokyo', 2, 6, 30, 40, 'true', 2, 'https://cf.geekdo-images.com/wOXROwYuEDNoDY6LhhUPGETrSnM=/fit-in/246x300/pic3043734.jpg', 'In King of Tokyo, you play mutant monsters, gigantic robots, and strange aliens—all of whom are destroying Tokyo and whacking each other in order to become the one and only King of Tokyo.  At the start of each turn, you roll six dice, which show the following six symbols: 1, 2, or 3 Victory Points, Energy, Heal, and Attack. Over three successive throws, choose whether to keep or discard each die in order to win victory points, gain energy, restore health, or attack other players into understanding that Tokyo is YOUR territory.', 'https://boardgamegeek.com/boardgame/70323/king-tokyo'),
 
-<<<<<<< HEAD
-new Game('Ra', 2, 5, 45, 60, 2, true, true, 'https://cf.geekdo-images.com/wjxi5Wn5-VAhU1V9ovFsMRBqkeY=/fit-in/246x300/pic3013552.jpg', 'Ra is an auction and set-collection game with an Ancient Egyptian theme. Each turn players are able to purchase lots of tiles with their bidding tiles (suns). Once a player has used up his or her suns, the other players continue until they do likewise, which may set up a situation with a single uncontested player bidding on tiles before the end of the round occurs. Tension builds because the round may end before all players have had a chance to win their three lots for the epoch. The various tiles either give immediate points, prevent negative points for not having certain types at the end of the round (epoch), or give points after the final round. The game lasts for three "epochs" (rounds). The game offers a short learning curve, and experienced players find it both fast-moving and a quick play.', 'https://boardgamegeek.com/boardgame/12/ra')];
-=======
   new Game('Ra', 2, 5, 45, 60, 'false', 2, 'https://cf.geekdo-images.com/wjxi5Wn5-VAhU1V9ovFsMRBqkeY=/fit-in/246x300/pic3013552.jpg', 'Ra is an auction and set-collection game with an Ancient Egyptian theme. Each turn players are able to purchase lots of tiles with their bidding tiles (suns). Once a player has used up his or her suns, the other players continue until they do likewise, which may set up a situation with a single uncontested player bidding on tiles before the end of the round occurs. Tension builds because the round may end before all players have had a chance to win their three lots for the epoch. The various tiles either give immediate points, prevent negative points for not having certain types at the end of the round (epoch), or give points after the final round. The game lasts for three "epochs" (rounds). The game offers a short learning curve, and experienced players find it both fast-moving and a quick play. ', 'https://boardgamegeek.com/boardgame/12/ra')
 ];
 
@@ -526,5 +497,3 @@ function removeGame(event) {
   gameCollection();
   saveGames();
 }
-
->>>>>>> 3b83dcad04157edbd991c5007da6b2fac075b4df
