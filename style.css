@@ -238,6 +238,16 @@ label {
   box-sizing: border-box;
 }
 
+#input-form2 {
+ background-color: #F6FAFA;
+ border: 1px solid black;
+ width: 800px;
+ height: 340px;
+ border-radius: 3px;
+ margin: 0 auto;
+ margin-top: 150px;
+}
+
 .form-left {
   width: 320px;
   float: left;
