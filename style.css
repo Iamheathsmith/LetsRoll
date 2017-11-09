@@ -36,9 +36,6 @@ header {
    border-bottom-right-radius: 3px;
  }
 
-
-
-
  /* the dice logo */
 
 .header-left img {
@@ -99,19 +96,18 @@ h2:link
 }
 h2:visited
 {
-    color: green;
+  color: green;
 }
 
 h2:hover
 {
-    color: white;
+  color: white;
 }
 
 h3 {
   color: red;
   font-family: "Permanent marker";
 }
-
 
  /* the meeple image */
 
@@ -130,11 +126,6 @@ h3 {
   margin-left: 25px;
 }
 
-.header-right img:active {
-  transform: rotate(2160deg);
-  transition-duration: all 3s;
-}
-
 .header-right img:hover {
   transition: .5s;
   margin-left: -40px;
@@ -146,6 +137,11 @@ h3 {
 .header-right img:active {
   transition: 3.2s;
   transform: rotate(4320deg);
+}
+
+.header-right img:active {
+  transform: rotate(2160deg);
+  transition-duration: all 3s;
 }
 
 /* input form for items to be entered in*/
@@ -168,6 +164,18 @@ label {
  margin: 0 auto;
  margin-top: 150px;
 }
+
+/*.input-center {
+  padding: 10px;
+  clear: both;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 3px;
+  display: table;
+}*/
 
 .form-left {
   width: 320px;
@@ -238,6 +246,14 @@ tbody tr td {
  border: 1px solid red;
  padding: 15px;
  text-align: left;
+}
+
+h4 {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 24px;
+  padding-top: 10px;
+  font-family: "Permanent marker";
 }
 
 /* the footer area */
