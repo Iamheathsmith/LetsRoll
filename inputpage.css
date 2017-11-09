@@ -146,8 +146,8 @@ h6 {
 }
 
 #input-form {
-  background-image: url("img/sorry-game.jpg");
-  background-size: 100% 100%;
+  background-image: url("img/checkerboard.png");
+  background-size: 100% 200%;
  /*background-color: #F6FAFA;*/
   border: 1px solid black;
   width: 800px;
