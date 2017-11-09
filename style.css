@@ -160,13 +160,15 @@ label {
 }
 
 #input-form {
- background-color: #F6FAFA;
- border: 1px solid black;
- width: 800px;
- height: 240px;
- border-radius: 3px;
- margin: 0 auto;
- margin-top: 150px;
+  background-image: url("img/board-game-image.jpg");
+  background-size: 100% 100%;
+  /*background-color: #F6FAFA;*/
+  border: 1px solid black;
+  width: 800px;
+  height: 240px;
+  border-radius: 3px;
+  margin: 0 auto;
+  margin-top: 150px;
 }
 
 .form-left {
@@ -183,6 +185,7 @@ label {
 }
 
 .form-li {
+  background-color: #F6FAFA;
   border: 1px solid black;
   border-radius: 3px;
   margin-top: 30px;
@@ -191,12 +194,19 @@ label {
 }
 
 .button {
-  padding-top: 10px;
+  padding-top: -5px;
   clear: both;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
 }
+
+.button img:hover {
+  transition: .5s;
+  width: 150px;
+  margin-top: -5px;
+}
+
 
 /* the results table */
 
