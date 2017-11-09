@@ -580,3 +580,5 @@ function removeGame(event) {
   gameCollection();
   saveGames();
 }
+
+// test
