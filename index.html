@@ -6,6 +6,7 @@
     <title>Lets Roll!!!!!</title>
     <link href="https://fonts.googleapis.com/css?family=Acme|Lobster|Permanent+Marker" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="img/favicon.ico" />
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
   </head>
@@ -25,7 +26,7 @@
           <a href="blank"><h2 class="not-picked">Game Recommendations</h2></a>
         </section>
         <section class="header-right">
-          <h3>Who goes first!</h3>
+          <h3>Who goes first?</h3>
             <img id="goFirstBtn" onclick="startGame()" onclick="spinner()" src="img/CharSticker8a.png">
         </section>
       </div>
@@ -40,7 +41,7 @@
       <form id="input-form">
         <ul class="form-left">
           <li class="form-li"><h6>Number of Players:</h6>
-              <select name="num-of-players" required>
+              <select class="numPlayers" name="num-of-players" required>
                 <option value="none-players" selected>Number of Players</option>
                 <option value="2">2 players</option>
                 <option value="3">3 players</option>
@@ -51,14 +52,13 @@
                 <option value="8">8 players</option>
               </select>
           </li>
-          <li class="form-li"><h6>How long can you Play?:</h6>
-              <input type="number" id="time-of-play" name="timePlay" required>
-              <label>Minutes.</label>
+          <li class="form-li"><h6>How long can you Play:</h6>
+              <input class="canPlayTime" type="number" id="time-of-play" placeholder=Minutes name="timePlay" required>
           </li>
         </ul>
         <ul class="form-right">
           <li class="form-li"><h6>Difficulty Level:</h6>
-            <select name="difficulty-lvl" required>
+            <select class="DifLvl" name="difficulty-lvl" required>
               <option value="" selected>please select</option>
               <option value="1">level 1</option>
               <option value="2">level 2</option>
@@ -69,7 +69,7 @@
           </li>
 
             <li class="form-li"><h6>Care about the look of game?</h6>
-            <select name="look_Of-Game">
+            <select class="lookNice" name="look_Of-Game">
               <option value="" selected>please select</option>
               <option value="Yes">YES, it does Matter</option>
               <option value="NO">NO, it does not Matter</option>
@@ -101,9 +101,9 @@
     </main>
 
     <ul class="icons">
-      <li><a href="#" class="fa fa-facebook"></a></li>
-      <li><a href="#" class="fa fa-twitter"></a></li>
-      <li><a href="#" class="fa fa-linkedin"></a></li>
+      <li class="iconsLook"><a href="#" class="fa fa-facebook"></a></li>
+      <li class="iconsLook"><a href="#" class="fa fa-twitter"></a></li>
+      <li class="iconsLook"><a href="#" class="fa fa-linkedin"></a></li>
     </ul>
 
     <footer>
