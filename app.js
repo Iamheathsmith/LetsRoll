@@ -8,6 +8,24 @@
 * input to search for recommendations on games they don't have.               *
 ****************************************************************/ 'use strict';
 
+// function for meeple spinner
+
+function spinner() {
+  var toggle = document.getElementById('goFirstBtn');
+  toggle.addEventListener('click', function() {
+    this.setAttribute('class', 'spin');
+  });
+}
+
+spinner();
+
+function startGame(){
+  var goFirst = ['Who just had a Birtday?', 'Who is the youngest?', 'Who is the oldest', 'who has the largest shoe size', 'who is the tallest', 'last one to do "noes goes"', 'last person to clean there toilet', 'who must recently finished a noval', 'short man goes first', 'last person to go for a run'];
+  var randomFirst = goFirst[Math.floor(Math.random() * goFirst.length)];
+  alert (randomFirst);
+};
+
+// end of function for meeple spinner
 
 
 
@@ -66,6 +84,120 @@ function Game (name, minPlayers, maxPlayers, minTime, maxTime, lookOfGame, diffi
 
 /***** PROTOTYPE METHODS *****/
 
+//
+// // function Game(name, numPlayers, playTime, skillLevel, isCompetitive, isThematic, pictureLink, description) {
+// //  this.name = name,
+// //  this.numPlayers = numPlayers,
+// //  this.playTime = playTime,
+// //  this.skillLevel = skillLevel,
+// //  this.isCompetitive = isCompetitive,
+// //  this.isThematic = isThematic,
+// //  this.pictureLink = pictureLink,
+// //  this.description = description;
+// // }
+//
+//
+// /***** VARIABLE DECLARATIONS *****/
+//
+//
+// var passingArray = []; // array to hold the objects that pass the filtering tests
+//
+//
+// /***** PROTOTYPE METHODS *****/
+//
+//
+// Game.prototype.playersMatch = function (formPlayers) {
+//   for (var i = 0; i < this.numPlayers.length; i++) { // for every possible number of players...
+//     if (formPlayers === this.numPlayers[i]) { // if that number is equal to the desired number...
+//       return true; // return true
+//     } // end if
+//   } // end for
+//   return false; // if no hours match, return false
+// }; // end playersMatch method
+//
+//
+// Game.prototype.timesMatch = function (formTime) {
+//   if (this.minTime <= formTime && formTime <= this.maxTime) { // if the game time is equal to the desired time...
+//     return true; // return true
+//   } else { // otherwise...
+//     return false; // return false
+//   } // end if else
+// }; // end timesMatch method
+//
+//
+// Game.prototype.coopMatch = function (formCompetitive) {
+//   if (formCompetitive = this.isCompetitive) { // if the game is the desired type...
+//     return true; // return true
+//   } else { // otherwise...
+//     return false; // return false
+//   } // end if else
+// }; // end coopMatch method
+//
+//
+// // method: match the form input to the stored value
+// Game.prototype.artMatch = function (formLooks) {
+//   if (formLooks = this.looksGood) { // if the game is the desired type...
+//     return true; // return true
+//   } else { // otherwise...
+//     return false; // return false
+//   } // end if else
+// }; // end artMatch method
+//
+//
+// /***** HELPER FUNCTIONS *****/
+//
+//
+// // function: add an object to the passing array if it passes every test
+// var addIfPassing = function (gameObject, formPlayers, formTime, formCompetitive, formLooks) {
+//   if (gameObject.prototype.playersMatch(formPlayers)
+//     && gameObject.prototype.timesMatch(formTime)
+//     && gameObject.prototype.coopMatch(formCompetitive)
+//     && gameObject.prototype.artMatch(formLooks)) { // if the game passes all of the tests...
+//     passingArray.push(gameObject); // add that game to the array
+//   } // end if
+// }; // end function addIfPassing
+//
+//
+// // function: generate the array of passing games
+// var updatePassingArray = function (formPlayers, formTime, formCompetitive, formLooks){
+//   passingArray = []; // reset the passing array
+//   for (var gameIndex = 0; gameIndex < gameArray.length; gameIndex++){ // for every game...
+//     addIfPassing(gameArray[gameIndex], formPlayers, formTime, formCompetitive, formLooks); // add object to the passing array if it passes
+//   } // end for
+// }; // end function updatePassingArray
+//
+//
+// // function: return a positive number regardless of the sign of the input number
+// var flipSign = function (integer) {
+//   if (integer < 0) { // if the integer is negative
+//     return integer * -1; // make it positive
+//   } else { // if the integer is already positive
+//     return integer; // return it as-is
+//   } // end if else
+// }; // end function flipSign
+//
+//
+// // function: sorts the array of passing games by difficulty, with the top being the closest difficulty to the desired difficulty
+// var sortByDifficulty = function (passingArray, formDifficulty) {
+//   var swapped; // declare variable to keep track of if swaps were made (starts as false)
+//   do { // run this code:
+//     swapped = false; // set swapped to false
+//     for (var i = 0; i < passingArray.length - 1; i++) { // for every game that passed the test
+//       if (flipSign(passingArray[i] - formDifficulty) > flipSign(passingArray[i + 1] - formDifficulty)) { // if the current index is farther away from the input difficulty than the next index...
+//         var temp = passingArray[i]; // place the value of the current index in a temporary location
+//         passingArray[i] = passingArray[i + 1]; // replace the current index spot with the next index
+//         passingArray[i + 1] = temp; // replace the next index spot with the value from the temporary location
+//         swapped = true; // indicate that a swap was made
+//       } // end if
+//     } // end for loop
+//   } while (swapped); // ...as long as swapped remains true by the end of the loop
+// }; // end function sortByDifficulty
+//
+//
+// // ********************** Who goes first button ***********************
+
+
+//goesFirst.addEventListener('click', startGame);
 
 // method: check if the input amount of players matches the number of players supported by a game
 Game.prototype.playersMatch = function (formPlayers) { // create new method playersMatch, where:
@@ -333,6 +465,7 @@ if (localStorage.numberOfGames !== 0) {
   loadGames();
 }
 
+
 var ourGameArray = [
 
 new Game('Caylus', 2, 5, 60, 150, 4, true, false, 'https://cf.geekdo-images.com/xAtnSiJMCFYKpOy9mujcchgZ4jo=/fit-in/246x300/pic1638795.jpg', '1289. To strengthen the borders of the Kingdom of France, King Philip the Fair decided to have a new castle built. For the time being, Caylus is but a humble village, but soon, workers and craftsmen will be flocking by the cartload, attracted by the great prospects. Around the building site, a city is slowly rising up.', 'https://boardgamegeek.com/boardgame/18602/caylus'),
@@ -394,3 +527,29 @@ new Game('Roll Through the Ages', 1, 4, 30, 45, 2, true, true, 'https://cf.geekd
 new Game('King of Tokyo', 2, 6, 30, 40, 2, true, true, 'https://cf.geekdo-images.com/wOXROwYuEDNoDY6LhhUPGETrSnM=/fit-in/246x300/pic3043734.jpg', 'In King of Tokyo, you play mutant monsters, gigantic robots, and strange aliens—all of whom are destroying Tokyo and whacking each other in order to become the one and only King of Tokyo.  At the start of each turn, you roll six dice, which show the following six symbols: 1, 2, or 3 Victory Points, Energy, Heal, and Attack. Over three successive throws, choose whether to keep or discard each die in order to win victory points, gain energy, restore health, or attack other players into understanding that Tokyo is YOUR territory.', 'https://boardgamegeek.com/boardgame/70323/king-tokyo'),
 
 new Game('Ra', 2, 5, 45, 60, 2, true, true, 'https://cf.geekdo-images.com/wjxi5Wn5-VAhU1V9ovFsMRBqkeY=/fit-in/246x300/pic3013552.jpg', 'Ra is an auction and set-collection game with an Ancient Egyptian theme. Each turn players are able to purchase lots of tiles with their bidding tiles (suns). Once a player has used up his or her suns, the other players continue until they do likewise, which may set up a situation with a single uncontested player bidding on tiles before the end of the round occurs. Tension builds because the round may end before all players have had a chance to win their three lots for the epoch. The various tiles either give immediate points, prevent negative points for not having certain types at the end of the round (epoch), or give points after the final round. The game lasts for three "epochs" (rounds). The game offers a short learning curve, and experienced players find it both fast-moving and a quick play.', 'https://boardgamegeek.com/boardgame/12/ra')];
+
+/***** Clear local storage button *****/
+
+function clearStorage() {
+  localStorage.clear();
+  location.reload();
+}
+
+/***** remove Individual game button *****/
+
+var gameName = document.getElementById('removeButton');
+gameName.addEventListener ('click', removeGame);
+
+function removeGame(event) {
+  console.log('EVENT', event)
+  event.preventDefault();
+  var inputName = event.target.form.elements[7].value;
+  console.log(inputName);
+  for (var i = 0; i < gameArray.length; i++) {
+    if(gameArray[i].name === inputName) {
+      gameArray.splice(i,1);
+    }
+  }
+  gameCollection();
+  saveGames();
+}
