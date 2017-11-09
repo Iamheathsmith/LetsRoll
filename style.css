@@ -156,23 +156,25 @@ label {
 }
 
 #input-form {
- background-color: #F6FAFA;
- border: 1px solid black;
- width: 800px;
- height: 240px;
- border-radius: 3px;
- margin: 0 auto;
- margin-top: 150px;
+  background-color: #F6FAFA;
+  border: 1px solid black;
+  width: 800px;
+  height: 240px;
+  border-radius: 3px;
+  margin: 0 auto;
+  margin-top: 150px;
+  box-shadow: 0px 1px 1px 1px #999;
 }
 
 #input-form2 {
- background-color: #F6FAFA;
- border: 1px solid black;
- width: 800px;
- height: 340px;
- border-radius: 3px;
- margin: 0 auto;
- margin-top: 270px;
+  background-color: #F6FAFA;
+  border: 1px solid black;
+  width: 800px;
+  height: 340px;
+  border-radius: 3px;
+  margin: 0 auto;
+  margin-top: 270px;
+  box-shadow: 0px 1px 1px 1px #999;
 }
 
 .form-left {
@@ -194,6 +196,7 @@ label {
   margin-top: 30px;
   padding: 10px;
   font-size: 24px;
+  box-shadow: 0px 1px 1px 1px #999;
 }
 
 .button {
@@ -232,6 +235,7 @@ td {
   background-color: #F6FAFA;
   text-align: center;
   border: 1px solid black;
+  box-shadow: 0px 1px 1px 1px #999;
 }
 
 thead tr th {
