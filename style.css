@@ -165,17 +165,15 @@ label {
  margin-top: 150px;
 }
 
-/*.input-center {
-  padding: 10px;
-  clear: both;
-  margin-top: 20px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  border: 1px solid black;
-  border-radius: 3px;
-  display: table;
-}*/
+#input-form2 {
+ background-color: #F6FAFA;
+ border: 1px solid black;
+ width: 800px;
+ height: 340px;
+ border-radius: 3px;
+ margin: 0 auto;
+ margin-top: 150px;
+}
 
 .form-left {
   width: 320px;
@@ -305,4 +303,42 @@ h5:visited
 h5:hover
 {
   color: red;
+}
+
+
+ /*   Social ICON items */
+.fa {
+  padding: 20px;
+   font-size: 30px;
+   width: 30px;
+   text-align: center;
+   text-decoration: none;
+   border-radius: 50%;
+   transition: 350ms ease;
+}
+/* location of icon*/
+.icons {
+  position: fixed;
+  top: 180px;
+  right: 5px;
+}
+/* Add a hover effect */
+.fa:hover {
+    opacity: 0.7;
+}
+/* Set a specific color for each brand */
+/* Facebook */
+.fa-facebook {
+    background: #3B5998;
+    color: white;
+}
+/* Twitter */
+.fa-twitter {
+    background: #55ACEE;
+    color: white;
+}
+/* linkedin */
+.fa-linkedin {
+    background: #007bb5;
+    color: white;
 }
