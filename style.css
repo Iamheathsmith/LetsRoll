@@ -94,6 +94,7 @@ h2:link
 {
   color: black;
 }
+
 h2:visited
 {
   color: green;
@@ -102,11 +103,13 @@ h2:visited
 h2:hover
 {
   color: white;
+  text-shadow: -1px 0 red, 0 1px red, 1px 0 red, 0 -1px red;
 }
 
 h3 {
   color: red;
   font-family: "Permanent marker";
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
  /* the meeple image */
@@ -156,13 +159,83 @@ label {
 }
 
 #input-form {
- background-color: #F6FAFA;
- border: 1px solid black;
- width: 800px;
- height: 240px;
- border-radius: 3px;
- margin: 0 auto;
- margin-top: 150px;
+  background-color: #F6FAFA;
+  border: 1px solid black;
+  width: 800px;
+  height: 310px;
+  border-radius: 3px;
+  margin: 0 auto;
+  margin-top: 100px;
+  box-shadow: 0px 1px 1px 1px #999;
+}
+
+.canPlayTime {
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 3px;
+  border: solid 1px black;
+  width: 100%;
+  box-sizing: border-box;
+}
+.numPlayers {
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 3px;
+  border: solid 1px black;
+  width: 100%;
+  height: 30px;
+  box-sizing: border-box;
+}
+
+#btn_main {
+  font-size: 18px;
+  font-family: "acme";
+  width: 20%;
+  height: 35px;
+  color: black;
+  box-sizing: border-box;
+  margin-right: 5%;
+  box-shadow: 0px 1px 1px 1px #999;
+}
+
+#btn_lib {
+  font-size: 18px;
+  font-family: "acme";
+  width: 20%;
+  height: 35px;
+  color: black;
+  box-sizing: border-box;
+  margin-right: 5%;
+  box-shadow: 0px 1px 1px 1px #999;
+}
+
+#input-form2 {
+  background-color: #F6FAFA;
+  border: 1px solid black;
+  width: 800px;
+  height: 430px;
+  border-radius: 3px;
+  margin: 0 auto;
+  margin-top: 270px;
+  box-shadow: 0px 1px 1px 1px #999;
+}
+
+.nameAdd {
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 3px;
+  border: solid 1px black;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.time {
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 3px;
+  border: solid 1px black;
+  width: 48%;
+  box-sizing: border-box;
 }
 
 #input-form2 {
@@ -182,10 +255,59 @@ label {
   margin-right: 50px;
 }
 
+.players {
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 3px;
+  border: solid 1px black;
+  width: 48%;
+  height: 30px;
+  box-sizing: border-box;
+}
+
 .form-right {
   width: 320px;
   float: right;
   margin-right: 50px;
+}
+
+.lookNice {
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 3px;
+  border: solid 1px black;
+  width: 100%;
+  height: 35px;
+  box-sizing: border-box;
+}
+
+.DifLvl {
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 3px;
+  border: solid 1px black;
+  width: 100%;
+  height: 30px;
+  box-sizing: border-box;
+}
+
+.removeText {
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 3px;
+  border: solid 1px black;
+  width: 48%;
+  box-sizing: border-box;
+}
+
+#removeButton {
+  font-size: 18px;
+  font-family: "acme";
+  width: 48%;
+  height: 35px;
+  color: red;
+  box-shadow: 0px 1px 1px 1px #999;
+  box-sizing: border-box;
 }
 
 .form-li {
@@ -194,17 +316,40 @@ label {
   margin-top: 30px;
   padding: 10px;
   font-size: 24px;
+  box-shadow: 0px 1px 1px 1px #999;
 }
 
 .button {
-  padding-top: 10px;
+  padding-top: 20px;
   clear: both;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
 }
 
+#btn {
+  font-size: 18px;
+  font-family: "acme";
+  width: 20%;
+  height: 35px;
+  color: green;
+  box-sizing: border-box;
+  margin-right: 5%;
+  box-shadow: 0px 1px 1px 1px #999;
+}
+
+.reset {
+  font-size: 18px;
+  font-family: "acme";
+  width: 20%;
+  height: 35px;
+  color: red;
+  box-sizing: border-box;
+  box-shadow: 0px 1px 1px 1px #999;
+}
+
 /* the results table */
+
 
 h4 {
   font-size: 24px;
@@ -232,6 +377,7 @@ td {
   background-color: #F6FAFA;
   text-align: center;
   border: 1px solid black;
+  box-shadow: 0px 1px 1px 1px #999;
 }
 
 thead tr th {
@@ -321,7 +467,22 @@ h5:hover
   position: fixed;
   top: 180px;
   right: 5px;
+  background-color: black;
+  padding: 5px;
+  border-radius: 3px;
+  opacity: .2;
+  transition: 350ms ease;
 }
+
+.icons:hover
+{
+  opacity: 1.0;
+}
+
+.iconsLook {
+  margin-bottom: 5px;
+}
+
 /* Add a hover effect */
 .fa:hover {
     opacity: 0.7;

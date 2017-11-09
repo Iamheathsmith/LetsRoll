@@ -35,7 +35,7 @@ function startGame(){
 
 
 // DOM calls
-var form = document.getElementById ('input-form'); // DOM location of the form to input user game
+var form = document.getElementById ('input-form2'); // DOM location of the form to input user game
 var mainButton = document.getElementById('btn_main'); // DOM location of the search form
 var button = document.getElementById ('btn'); // DOM location of the button for that form
 var libraryButton = document.getElementById ('btn_lib');

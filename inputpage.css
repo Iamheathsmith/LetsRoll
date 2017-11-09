@@ -1,0 +1,291 @@
+/* app styles */
+
+main {
+  width: 960px;
+  margin: auto;
+  margin-top: 200px;
+  align-content: center;
+}
+
+ body {
+   background-color: #FDFFFD;
+   width: 100%;
+   align-content: center;
+ }
+
+/* The header CSS items */
+.header-box {
+  width: 960px;
+  margin-left: calc(50% - 480px);
+}
+
+header {
+  position: fixed;
+  top: 0;
+  box-shadow: 0px 0px 4px 1px #222;
+  height: 130px;
+  padding-top: 10px;
+}
+
+ .header {
+   background-color: black;
+   width: 100%;
+   background-size: cover;
+   padding-bottom: 5px;
+   border-bottom-left-radius: 3px;
+   border-bottom-right-radius: 3px;
+ }
+
+/* logo part of header */
+
+.header-left img {
+  width: 100px;
+  float: left;
+  margin-top: 20px;
+  margin-left: 30px;
+}
+
+.header-left img:hover {
+  width: 125px;
+  margin-right: -25px;
+  margin-bottom: -15px;
+  margin-top: 5px;
+  transition: .2s;
+}
+
+/* the tab section in header */
+
+.header-middle {
+  text-align: center;
+  margin: 0 auto;
+  width: 660px;
+}
+
+.header-middle h2 {
+  margin-top: 20px;
+  text-align: center;
+  display: inline-block;
+  font-family: "Permanent marker";
+  font-size: 24px;
+  margin-right: 20px;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  padding: 5px;
+  padding-bottom: 15px;
+  border-bottom: 2px dashed white;
+}
+
+.not-picked {
+  background-color: black;
+  color: red;
+}
+.seletor {
+  background-color: #FF342A;
+  color: black;
+}
+
+h1 {
+  font-family: "lobster";
+  color: white;
+  font-size: 60px;
+}
+
+h2:link
+{
+  color: black;
+}
+h2:visited
+{
+  color: green;
+}
+
+h2:hover
+{
+  color: white;
+}
+
+ /* the meeple part of header */
+
+.header-right {
+  position: relative;
+  bottom: 80px;
+  float: right;
+  margin-right: 30px;
+  width: 130px;
+}
+
+.header-right img {
+  margin-top: 5px;
+  width: 60px;
+  height: 60px;
+  margin-left: 25px;
+}
+
+.header-right img:hover {
+  transition: .5s;
+  margin-left: -40px;
+  margin-bottom: -130px;
+  width: 190px;
+  height: 190px;
+}
+
+.header-right img:active {
+  transition: 3.2s;
+  transform: rotate(4320deg);
+}
+
+h3 {
+  color: red;
+  font-family: "Permanent marker";
+}
+
+/* the input section */
+
+h6 {
+  font-family: "acme";
+}
+
+#input-form {
+ background-color: #F6FAFA;
+ border: 1px solid black;
+ width: 800px;
+ height: 360px;
+ border-radius: 3px;
+ margin: 0 auto;
+ margin-top: 150px;
+}
+
+/*.input-center {
+  padding: 10px;
+  clear: both;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 3px;
+  display: table;
+}*/
+
+.form-left {
+  width: 320px;
+  float: left;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.form-right {
+  width: 320px;
+  float: right;
+  margin-right: 50px;
+}
+
+.form-li {
+  border: 1px solid black;
+  border-radius: 3px;
+  margin-top: 30px;
+  padding: 10px;
+  font-size: 24px;
+}
+
+.button {
+  padding-top: 20px;
+  clear: both;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+ /* the results talbe */
+
+ th {
+   font-family: "Permanent marker";
+ }
+
+ td {
+   font-family: "Permanent marker";
+ }
+
+.results {
+  margin-top: 80px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 100px;
+  width: 800px;
+  height: 220px;
+  border-radius: 3px;
+  background-color: #F6FAFA;
+  text-align: center;
+  border: 1px solid black;
+}
+
+thead tr th {
+ border: 1px solid red;
+ padding: 15px;
+ text-align: left;
+}
+
+tbody tr td {
+ border: 1px solid red;
+ padding: 15px;
+ text-align: left;
+}
+
+h4 {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 24px;
+  padding-top: 10px;
+  font-family: "Permanent marker";
+}
+
+/* footer stuff here */
+
+footer {
+  background-image: url("img/Monopoly-Board copy.jpg");
+  width: 100%;
+  background-size: cover;
+  height: 100px;
+}
+
+.footer-box {
+  width: 960px;
+  margin-left: calc(50% - 480px);
+}
+
+.footer-left {
+  text-align: center;
+  float: left;
+  width: 300px;
+  height: 100px;
+}
+
+.footer-right {
+  text-align: center;
+  float:  right;
+  width: 200px;
+  height: 100px;
+}
+
+h5 {
+  padding: 40px;
+  font-size: 20px;
+  font-family: "acme";
+  color: white;
+  text-decoration: underline;
+}
+
+h5:link
+{
+  color: white;
+}
+
+h5:visited
+{
+  color: green;
+}
+
+h5:hover
+{
+  color: red;
+}
