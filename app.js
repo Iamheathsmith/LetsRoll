@@ -9,6 +9,54 @@
 ****************************************************************/ 'use strict';
 
 
+var allowedKeys = {
+  37: 'left',
+  38: 'up',
+  39: 'right',
+  40: 'down',
+  65: 'a',
+  66: 'b'
+};
+
+// the 'official' Konami Code sequence
+var konamiCode = ['up', 'up', 'down', 'down', 'left', 'right', 'left', 'right', 'b', 'a'];
+
+// a variable to remember the 'position' the user has reached so far.
+var konamiCodePosition = 0;
+
+// add keydown event listener
+document.addEventListener('keydown', function(e) {
+  // get the value of the key code from the key map
+  var key = allowedKeys[e.keyCode];
+  // get the value of the required key from the konami code
+  var requiredKey = konamiCode[konamiCodePosition];
+
+  // compare the key with the required key
+  if (key == requiredKey) {
+
+    // move to the next key in the konami code sequence
+    konamiCodePosition++;
+
+    // if the last key is reached, activate cheats
+    if (konamiCodePosition == konamiCode.length) {
+      activateCheats();
+      konamiCodePosition = 0;
+    }
+  } else {
+    konamiCodePosition = 0;
+
+  }
+});
+
+function activateCheats() {
+  alert('Cheats Activated, GOONEIES NEVER DIE!!');
+  var lol = document.getElementById ('rick');
+  lol.setAttribute('style', 'display: block;');
+}
+
+
+
+
 /***** VARIABLE DECLARATIONS *****/
 
 
@@ -390,4 +438,3 @@ var ourGameArray = [
 
   new Game('Ra', 2, 5, 45, 60, 'false', 2, 'https://cf.geekdo-images.com/wjxi5Wn5-VAhU1V9ovFsMRBqkeY=/fit-in/246x300/pic3013552.jpg', 'Ra is an auction and set-collection game with an Ancient Egyptian theme. Each turn players are able to purchase lots of tiles with their bidding tiles (suns). Once a player has used up his or her suns, the other players continue until they do likewise, which may set up a situation with a single uncontested player bidding on tiles before the end of the round occurs. Tension builds because the round may end before all players have had a chance to win their three lots for the epoch. The various tiles either give immediate points, prevent negative points for not having certain types at the end of the round (epoch), or give points after the final round. The game lasts for three "epochs" (rounds). The game offers a short learning curve, and experienced players find it both fast-moving and a quick play. ', 'https://boardgamegeek.com/boardgame/12/ra')
 ];
-
