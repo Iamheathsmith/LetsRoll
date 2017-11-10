@@ -8,66 +8,32 @@
 * input to search for recommendations on games they don't have.               *
 ****************************************************************/ 'use strict';
 
-// function for meeple spinner
-
-function spinner() {
-  var toggle = document.getElementById('goFirstBtn');
-  toggle.addEventListener('click', function() {
-    this.setAttribute('class', 'spin');
-  });
-}
-
-spinner();
-
-function startGame(){
-  var goFirst = ['Who just had a Birtday?', 'Who is the youngest?', 'Who is the oldest', 'who has the largest shoe size', 'who is the tallest', 'last one to do "noes goes"', 'last person to clean there toilet', 'who must recently finished a noval', 'short man goes first', 'last person to go for a run'];
-  var randomFirst = goFirst[Math.floor(Math.random() * goFirst.length)];
-  alert (randomFirst);
-};
-
-// end of function for meeple spinner
-
-
 
 /***** VARIABLE DECLARATIONS *****/
 
 
-
-
 // DOM calls
-var form = document.getElementById ('input-form2'); // DOM location of the form to input user game
+var form = document.getElementById ('input-form'); // DOM location of the form to input user game
+var form2 = document.getElementById ('input-form2'); // DOM location of the form to input user game
 var mainButton = document.getElementById('btn_main'); // DOM location of the search form
 var button = document.getElementById ('btn'); // DOM location of the button for that form
 var libraryButton = document.getElementById ('btn_lib');
 var table = document.getElementById('results-table');
+var gameName = document.getElementById('removeButton');
 
 
-
-/* TODO ***********************************************************************
-* add DOM calls for the search form class. This will be used for both the     *
-* "Let's Roll" page and the game recommendations page. The parameters used by *
-* this form will be the ones referenced by the testing and sorting methods    *
-******************************************************************************/
-
-
-
+// arrays for holding objects
 var gameArray = [];
 var passingArray = []; // array to hold the objects that pass the filtering tests
 
 
-
-
 // "who goes first?" information
-var goFirst = [ // create new array of different ways to go first, containing:
-  'Who just had a Birthday?',
-  'Who is the youngest?',
-  'Who is the oldest'
+var goFirst = [
+  'Who just had a Birtday?', 'Who is the youngest?', 'Who is the oldest', 'who has the largest shoe size', 'who is the tallest', 'last one to do "noes goes"', 'last person to clean there toilet', 'who must recently finished a noval', 'short man goes first', 'last person to go for a run'
 ]; // end of goFirst array
 
 
 /***** OBJECT CONSTRUCTOR *****/
-
-
 
 
 function Game (name, minPlayers, maxPlayers, minTime, maxTime, lookOfGame, difficulty, pictureLink, description, bggLink) { // construtor for Game objects
@@ -89,8 +55,6 @@ function Game (name, minPlayers, maxPlayers, minTime, maxTime, lookOfGame, diffi
 
 // method: check if the input amount of players matches the number of players supported by a game
 Game.prototype.playersMatch = function (formPlayers) { // create new method playersMatch, where:
-
-
   if (parseInt(this.minPlayers) <= parseInt(formPlayers) && parseInt(formPlayers) <= parseInt(this.maxPlayers)) {
     return true;
   } else {
@@ -151,9 +115,8 @@ var flipSign = function (integer) { // create new function flipSign, where:
 }; // end function flipSign
 
 
-// function: sorts the array of passing games by difficulty, with the top being the closest difficulty to the desired difficulty
+// function: sorts the array of passing games by difficulty, closest to the user input
 var sortByDifficulty = function (passingArray, formDifficulty) { // create new function sortByDifficulty, where:
-
   var swapped; // declare variable to keep track of if swaps were made (starts as false)
   do { // run this code...
     swapped = false; // set swapped to false
@@ -166,54 +129,71 @@ var sortByDifficulty = function (passingArray, formDifficulty) { // create new f
       } // end if
     } // end for loop
   } while (swapped); // ...as long as swapped remains true by the end of the loop
-}; // end function sortByDifficulty
+} // end function sortByDifficulty
 
 
-var shortenPassingArray = function () {
-  while (passingArray.length > 6) {
-    passingArray.pop();
-  }
+// function: shortens the array shown to 6 items
+function shortenPassingArray () { // create new function shortenPassingArray, where:
+  while (passingArray.length > 6) { // while the passing array is longer than 6 items...
+    passingArray.pop(); // remove the last item
+  } // end while
+} // end function shortenPassingArray
+
+
+// function: create a table cell
+function createCell (property, parent) { // create new function createCell, where:
+  var td = document.createElement('td'); // create new table cell element
+  td.innerHTML = property; // set the cell data to the input argument
+  parent.appendChild(td); // append the cell from the parent
+} // end createCell function
+
+
+// function: output the games to the results table
+function outputGames (objectArray) {
+  document.getElementById('results-table').innerHTML = ''; // clear the results table
+  var newRow; // declare a variable to hold the rows
+  for (var i = 0; i < objectArray.length; i++) { // for every item in the game array
+    newRow = document.createElement('tr'); // create a new table row
+    createCell (objectArray[i].name, newRow); // add a name cell
+    createCell (objectArray[i].minPlayers + " to " + objectArray[i].maxPlayers + " players", newRow);
+    createCell (objectArray[i].minTime + " to " + objectArray[i].maxTime + " minutes", newRow);
+    createCell (objectArray[i].looksGood, newRow);
+    createCell (objectArray[i].difficulty, newRow);
+    table.appendChild(newRow); // append the row
+  } // end for
+} // end function outputGames
+
+
+// function: return a table for the search results on either search page
+// var searchResults = function () {
+//   document.getElementById ('results-table').innerHTML = '';
+//   var newRow;
+//   for (var i = 0; i < passingArray.length; i++){
+//     newRow = document.createElement('tr');
+//     createCell (passingArray[i].name, newRow);
+//     createCell (passingArray[i].minPlayers, newRow);
+//     createCell (passingArray[i].maxPlayers, newRow);
+//     createCell (passingArray[i].minTime, newRow);
+//     createCell (passingArray[i].maxTime, newRow);
+//     createCell (passingArray[i].looksGood, newRow);
+//     createCell (passingArray[i].difficulty, newRow);
+//     table.appendChild(newRow);
+//   }
+// };
+
+
+function startGame(){
+  var randomFirst = goFirst[Math.floor(Math.random() * goFirst.length)];
+  alert (randomFirst);
 };
 
 
-function createCell (property, parent) {
-  var td = document.createElement('td');
-  td.innerHTML = property;
-  parent.appendChild(td);
+function spinner() {
+  var toggle = document.getElementById('goFirstBtn');
+  toggle.addEventListener('click', function() {
+    this.setAttribute('class', 'spin');
+  });
 }
-
-
-function outputGames() {
-  document.getElementById('results-table').innerHTML = '';
-  var newRow;
-  for (var i = 0; i < gameArray.length; i++) {
-    console.log(event);
-    newRow = document.createElement('tr');
-    createCell (gameArray[i].name, newRow);
-    createCell (gameArray[i].minPlayers + " to " + gameArray[i].maxPlayers + " players", newRow);
-    createCell (gameArray[i].minTime + " to " + gameArray[i].maxTime + " minutes", newRow);
-    createCell ("looks good? " + gameArray[i].looksGood, newRow);
-    createCell ("difficulty :" + gameArray[i].difficulty, newRow);
-    table.appendChild(newRow);
-  }
-}
-
-
-var searchResults = function () {
-  document.getElementById ('results-table').innerHTML = '';
-  var newRow;
-  for (var i = 0; i < passingArray.length; i++){
-    newRow = document.createElement('tr');
-    createCell (passingArray[i].name, newRow);
-    createCell (passingArray[i].minPlayers, newRow);
-    createCell (passingArray[i].maxPlayers, newRow);
-    createCell (passingArray[i].minTime, newRow);
-    createCell (passingArray[i].maxTime, newRow);
-    createCell (passingArray[i].looksGood, newRow);
-    createCell (passingArray[i].difficulty, newRow);
-    table.appendChild(newRow);
-  }
-};
 
 
 /***** LOCAL STORAGE ****/
@@ -251,6 +231,12 @@ var loadGames = function () {
 }; // end loadGames function
 
 
+function clearStorage() {
+  localStorage.clear();
+  location.reload();
+}
+
+
 /**** EVENT LISTENERS *****/
 
 
@@ -262,6 +248,7 @@ var loadGames = function () {
 
 if (button) { // if 'button' exists in HTML...
   button.addEventListener ('click', gameInput); // when the input submission button is clicked, run the gameInput function
+  gameName.addEventListener ('click', removeGame);
 } else if (mainButton){ // otherwise
   mainButton.addEventListener('click', gameSearch); // when the search button is clicked, run the gameSearch function
 } else if (libraryButton) {
@@ -290,58 +277,58 @@ function gameInput (event) { // create new function gameInput, where:
 
     ) // end new game object
   ); // end pushing to array
-  // form.reset(); // make the form ready for additional input
-  outputGames();
+  form2.reset(); // make the form ready for additional input
+  outputGames(gameArray);
   saveGames();
 } // end function gameInput
 
 
 // function: on search form submission, sort and order the array of games, then output them in a table
 function gameSearch (event) { // create new function gameSearch, where:
-
   event.preventDefault(); // prevent the page from refreshing
   // get information from the form questions:
   var searchNumPlayers = event.target.form.elements[0].value; // Number of players
   var searchTime = event.target.form.elements[1].value; // Max time you can play
   var searchDifficulty = event.target.form.elements[2].value; // Difficult level (1 - 5)
   var searchLooks = event.target.form.elements[3].value; // Care about the look of the game?
-
-  //TODO: fix this! Form returns as NULL
-  // form.reset();
-
   updatePassingArray(searchNumPlayers, searchTime, searchLooks, gameArray); // update the objects in the array of "passing" games
   sortByDifficulty(passingArray, searchDifficulty); // sort those games by difficulty
   shortenPassingArray();
-  searchResults();
+  outputGames(passingArray);
+  // searchResults();
   form.reset();
-
 } // end function gameSearch
 
-function librarySearch (event) { // create new function gameSearch, where:
 
+function librarySearch (event) { // create new function gameSearch, where:
   event.preventDefault(); // prevent the page from refreshing
   // get information from the form questions:
   var searchNumPlayers = event.target.form.elements[0].value; // Number of players
   var searchTime = event.target.form.elements[1].value; // Max time you can play
   var searchDifficulty = event.target.form.elements[2].value; // Difficult level (1 - 5)
   var searchLooks = event.target.form.elements[3].value; // Care about the look of the game?
-
-  //TODO: fix this! Form returns as NULL
-  // form.reset();
-
   updatePassingArray(searchNumPlayers, searchTime, searchLooks, ourGameArray); // update the objects in the array of "passing" games
   sortByDifficulty(passingArray, searchDifficulty); // sort those games by difficulty
   shortenPassingArray();
-  searchResults();
+  outputGames(passingArray);
+  // searchResults();
   form.reset();
-
 } // end function gameSearch
 
 
-/* TODO ***********************************************************************
-* hook up randomFirst to a click event on the "who goes first?" button. This  *
-* will be the button on the top right of every page.                          *
-******************************************************************************/
+function removeGame(event) {
+  console.log('EVENT', event)
+  event.preventDefault();
+  var inputName = event.target.form.elements[7].value;
+  console.log(inputName);
+  for (var i = 0; i < gameArray.length; i++) {
+    if(gameArray[i].name === inputName) {
+      gameArray.splice(i,1);
+    }
+  }
+  outputGames(gameArray);
+  saveGames();
+}
 
 
 // function: pick a random way to decide who goes first
@@ -368,6 +355,18 @@ function startGame() {
 };
 // end randomFirst function
 
+/***** STARTING STATE *****/
+
+
+spinner();
+
+
+// object arrays
+if (localStorage.numberOfGames !== 0) {
+  loadGames();
+}
+
+
 /***** Clear local storage button *****/
 
 function clearStorage() {
@@ -377,31 +376,8 @@ function clearStorage() {
 
 /***** remove Individual game button *****/
 
-var gameName = document.getElementById('removeButton');
-gameName.addEventListener ('click', removeGame);
-
-function removeGame(event) {
-  console.log('EVENT', event)
-  event.preventDefault();
-  var inputName = event.target.form.elements[7].value;
-  console.log(inputName);
-  for (var i = 0; i < gameArray.length; i++) {
-    if(gameArray[i].name === inputName) {
-      gameArray.splice(i,1);
-    }
-  }
-  gameCollection();
-  saveGames();
-}
 
 
-
-
-
-// object arrays
-if (localStorage.numberOfGames !== 0) {
-  loadGames();
-}
 
 
 
@@ -471,29 +447,3 @@ var ourGameArray = [
 
   new Game('Ra', 2, 5, 45, 60, 'false', 2, 'https://cf.geekdo-images.com/wjxi5Wn5-VAhU1V9ovFsMRBqkeY=/fit-in/246x300/pic3013552.jpg', 'Ra is an auction and set-collection game with an Ancient Egyptian theme. Each turn players are able to purchase lots of tiles with their bidding tiles (suns). Once a player has used up his or her suns, the other players continue until they do likewise, which may set up a situation with a single uncontested player bidding on tiles before the end of the round occurs. Tension builds because the round may end before all players have had a chance to win their three lots for the epoch. The various tiles either give immediate points, prevent negative points for not having certain types at the end of the round (epoch), or give points after the final round. The game lasts for three "epochs" (rounds). The game offers a short learning curve, and experienced players find it both fast-moving and a quick play. ', 'https://boardgamegeek.com/boardgame/12/ra')
 ];
-
-/***** Clear local storage button *****/
-
-function clearStorage() {
-  localStorage.clear();
-  location.reload();
-}
-
-/***** remove Individual game button *****/
-
-var gameName = document.getElementById('removeButton');
-gameName.addEventListener ('click', removeGame);
-
-function removeGame(event) {
-  console.log('EVENT', event)
-  event.preventDefault();
-  var inputName = event.target.form.elements[7].value;
-  console.log(inputName);
-  for (var i = 0; i < gameArray.length; i++) {
-    if(gameArray[i].name === inputName) {
-      gameArray.splice(i,1);
-    }
-  }
-  gameCollection();
-  saveGames();
-}
