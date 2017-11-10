@@ -164,24 +164,6 @@ function outputGames (objectArray) {
 } // end function outputGames
 
 
-// function: return a table for the search results on either search page
-// var searchResults = function () {
-//   document.getElementById ('results-table').innerHTML = '';
-//   var newRow;
-//   for (var i = 0; i < passingArray.length; i++){
-//     newRow = document.createElement('tr');
-//     createCell (passingArray[i].name, newRow);
-//     createCell (passingArray[i].minPlayers, newRow);
-//     createCell (passingArray[i].maxPlayers, newRow);
-//     createCell (passingArray[i].minTime, newRow);
-//     createCell (passingArray[i].maxTime, newRow);
-//     createCell (passingArray[i].looksGood, newRow);
-//     createCell (passingArray[i].difficulty, newRow);
-//     table.appendChild(newRow);
-//   }
-// };
-
-
 function startGame(){
   var randomFirst = goFirst[Math.floor(Math.random() * goFirst.length)];
   alert (randomFirst);
@@ -231,6 +213,7 @@ var loadGames = function () {
 }; // end loadGames function
 
 
+//
 function clearStorage() {
   localStorage.clear();
   location.reload();
@@ -238,12 +221,6 @@ function clearStorage() {
 
 
 /**** EVENT LISTENERS *****/
-
-
-/* TODO ***********************************************************************
-* add event listener for the "who goes first?" button. Hook this up to the    *
-* randomFirst function found below.                                           *
-******************************************************************************/
 
 
 if (button) { // if 'button' exists in HTML...
@@ -337,48 +314,14 @@ var randomFirst = function () { // create new function randomFirst, where:
 
 }; // end randomFirst function
 
-/***** start button *****/
-
-function spinner() {
-  var toggle = document.getElementById('goFirstBtn');
-  toggle.addEventListener('click', function() {
-    this.setAttribute('class', 'spin');
-  });
-}
-
-spinner();
-
-function startGame() {
-  var goFirst = ['Who just had a Birtday?', 'Who is the youngest?', 'Who is the oldest', 'who has the largest shoe size', 'who is the tallest', 'last one to do "noes goes"'];
-  var randomFirst = goFirst[Math.floor(Math.random() * goFirst.length)];
-  alert (randomFirst);
-};
-// end randomFirst function
 
 /***** STARTING STATE *****/
 
 
 spinner();
-
-
-// object arrays
 if (localStorage.numberOfGames !== 0) {
   loadGames();
 }
-
-
-/***** Clear local storage button *****/
-
-function clearStorage() {
-  localStorage.clear();
-  location.reload();
-}
-
-/***** remove Individual game button *****/
-
-
-
-
 
 
 /***** GAME LIBRARY *****/
