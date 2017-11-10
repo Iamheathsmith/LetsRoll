@@ -7,6 +7,14 @@ main {
   align-content: center;
 }
 
+#rick {
+  z-index: 1;
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
  body {
    background-color: #FDFFFD;
    width: 100%;
@@ -403,7 +411,7 @@ h4 {
 /* the footer area */
 
 footer {
-  background-image: url("img/Monopoly-Board copy.jpg");
+  background-color: black;
   width: 100%;
   background-size: cover;
   height: 100px;
@@ -449,6 +457,7 @@ h5:visited
 h5:hover
 {
   color: red;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
 
