@@ -353,6 +353,7 @@ function removeGame(event) {
   }
   outputGames(gameArray);
   saveGames();
+  form2.reset();
 }
 
 
