@@ -77,7 +77,7 @@ var passingArray = []; // array to hold the objects that pass the filtering test
 
 // "who goes first?" information
 var goFirst = [
-  'Who just had a Birtday?', 'Who is the youngest?', 'Who is the oldest', 'who has the largest shoe size', 'who is the tallest', 'last one to do "noes goes"', 'last person to clean there toilet', 'who must recently finished a noval', 'short man goes first', 'last person to go for a run'
+  'Who just had a Birthday?', 'Who is the youngest?', 'Who is the oldest?', 'who has the largest shoe size?', 'who is the tallest?', 'last one to do "noes goes"?', 'last person to clean there toilet?', 'who must recently finished a novel?', 'short man goes first?', 'last person to go for a run?'
 ]; // end of goFirst array
 
 
