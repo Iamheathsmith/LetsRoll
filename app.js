@@ -36,6 +36,7 @@ function startGame(){
 
 // DOM calls
 var form = document.getElementById ('input-form2'); // DOM location of the form to input user game
+var form2 = document.getElementById ('input-form')
 var mainButton = document.getElementById('btn_main'); // DOM location of the search form
 var button = document.getElementById ('btn'); // DOM location of the button for that form
 var libraryButton = document.getElementById ('btn_lib');
@@ -450,7 +451,7 @@ function librarySearch (event) { // create new function gameSearch, where:
   sortByDifficulty(passingArray, searchDifficulty); // sort those games by difficulty
   shortenPassingArray();
   searchResults();
-  form.reset();
+  form2.reset();
 
 } // end function gameSearch
 
@@ -565,7 +566,7 @@ function clearStorage() {
 /***** remove Individual game button *****/
 
 var gameName = document.getElementById('removeButton');
-gameName.addEventListener ('click', removeGame);
+// gameName.addEventListener ('click', removeGame);
 
 function removeGame(event) {
   console.log('EVENT', event)
