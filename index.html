@@ -71,8 +71,8 @@
             <li class="form-li"><h6>Care about the look of game?</h6>
             <select class="lookNice" name="look_Of-Game">
               <option value="" selected>please select</option>
-              <option value="Yes">YES, it does Matter</option>
-              <option value="NO">NO, it does not Matter</option>
+              <option value="true">YES, it does Matter</option>
+              <option value="false">NO, it does not Matter</option>
             </select>
           </li>
         </ul>
@@ -83,17 +83,15 @@
 
       <table class="results">
         <h4>** What We Recommended **</h4>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Min Players</th>
-              <th>Max Players</th>
-              <th>Min time</th>
-              <th>Max time</th>
-              <th>Looks nice</th>
-              <th>Difficulty level</th>
-            </tr>
-          </thead>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Number of Players</th>
+            <th>Time Range</th>
+            <th>Does It Look Good?</th>
+            <th>Difficulty level</th>
+          </tr>
+        </thead>
         <tbody id="results-table">
           <!--table content dynamically generrated in JS-->
         </tbody>
